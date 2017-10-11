@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{$page_title}</title>
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/supply-offers.css">
+</head>
+<body>
+    <!----header---->
+    <include file="Public/index-head" />
+
+
+    <!----nav---->
+    <include file="Public/index-nav" />
+
+    <!----supply offers---->
+    <div class="supply-offers wrapper">
+        <div class="supply-offers-hd">
+            <h1>How to post your supply request ?</h1>
+            <ul class="clearfix">
+                <li>
+                    <i></i>
+                    <span class="icon1"></span>
+                    <b>step 1</b>
+                    <p>Register as a Member</p>
+                </li>
+                <li>
+                    <i></i>
+                    <span class="icon2"></span>
+                    <b>step 2</b>
+                    <p>Improve your information</p>
+                </li>
+                <li>
+                    <span class="icon3"></span>
+                    <b>step 3</b>
+                    <p>Get free inquiry immediately</p>
+                </li>
+            </ul>
+        </div>
+        <div class="supply-offers-bd">
+            <div class="supply-offers-bd-results">
+                <strong>Filter the species</strong>
+                <select class="chosen-select" style="width: 200px;" id="chosen-select">
+                    
+                </select>
+                <em id="results-content"></em>
+            </div>
+            <div class="supply-offers-list" id="supply-offers-list-content">
+                
+            </div>
+            <!----pages---->
+            <div id="pages-content">
+				
+			</div>
+        </div>
+    </div>
+
+    <!----footer---->
+    <include file="Public/footer" />
+
+
+</body>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/js/supply-offers.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/Home/js/template-web.js"></script>
+<script id="type-list" type="text/html">
+{{each data as value i}}
+	<option value="{{value.type}}">{{value.text}}</option>
+{{/each}}
+</script>
+<script id="results" type="text/html">
+<font>{{count}}</font> results  <font>{{page}}</font> / {{page_count}} <a href="/home/my/supply_form.html"><i></i>Post Selling Leads</a>
+</script>
+<script id="supply-offers-list" type="text/html">
+{{each list as value i}}
+	<dl class="clearfix">
+		<dt><a href="{{value.url}}"><img src="{{value.image}}"></a></dt>
+		<dd>
+			<h2><a href="{{value.url}}">{{value.title}}</a></h2>
+			<p><span>Type:</span><em>{{value.type}}</em></p>
+			<p><span>Location:</span><em>{{value.location}}</em></p>
+			<a href="{{value.url}}" class="keywa-btn view_delete">View Delete</a>
+		</dd>
+	</dl>
+{{/each}}
+</script>
+<include file="Supply/pages" />
+<script type="text/javascript">
+$(document).ready(function(){
+	$.post("{$url_search_data}", {}, function(d){
+		if(d.code == '000'){
+			var html = template('type-list', d);
+			document.getElementById('chosen-select').innerHTML = html;
+			
+			$('#chosen-select').change(function(){
+				get_list("{$url}");
+			});
+			
+			$.pageinit();
+		}
+	}, 'json');
+	
+	get_list("{$url}");
+});
+
+function get_list(url){
+	var data = {
+		type:$('#chosen-select').val(),
+	};
+	$.post(url, data, function(d){
+		console.log(d);
+		if(d.code == '000'){
+			var html = template('results', d);
+			document.getElementById('results-content').innerHTML = html;
+			
+			var html = template('supply-offers-list', d);
+			document.getElementById('supply-offers-list-content').innerHTML = html;
+			
+			document.getElementById('pages-content').innerHTML = d.page_html;
+		}
+	}, 'json');
+}
+</script>
+
+<include file="Public/js" />
+
+</html>

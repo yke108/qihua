@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>商城销售管理--商品销售信息详情</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/common/common.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/page/sell/details.css">
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/lib/easyui/jquery.easyui.min.js"></script>
+</head>
+
+<body>
+<form action="{:U('Sell/addProduct')}" method="post">
+title:<input type="text" name="title" value=""><br>
+categoryList:<input type="text" name="categoryList" value="1,2,6"><br>
+化学品名(Chemical Name):<input type="text" name="enName"><br>
+Synonyms:<input type="text" name="enAlias"><br>
+producerId:<input type="text" name="producerId"><br>
+brandId:<input type="text" name="brandId" value="2"><br>
+placeList:<input type="text" name="placeList" value="1,5,6"><br>
+seatList:<input type="text" name="seatList" value="1,2,4"><br>
+
+format:<input type="text" name="format" value=""><br>
+Appearance:<input type="text" name="character" value=""><br>
+qualityGradeID:<input type="text" name="qualityGradeID" value="1"><br>
+CAS NO.:<input type="text" name="cas"><br>
+EINECS NO.:<input type="text" name="einecs_no"><br>
+Odor:<input type="text" name="smell"><br>
+Melting Point:<input type="text" name="melting"><br>
+Flash Point:<input type="text" name="flash"><br>
+pH:<input type="text" name="ph"><br>
+Relative Density:<input type="text" name="density"><br>
+Solubility:<input type="text" name="solubility"><br>
+Molecular Weight:<input type="text" name="formula"><br>
+msds:<input type="text" name="msds" value="/Uploads/User/20170901/59a8f644bd6a4.png"><br>
+tds:<input type="text" name="msds" value="/Uploads/User/20170901/59a8f6473a589.png"><br>
+coa:<input type="text" name="msds" value="/Uploads/User/20170901/59a8f6497d843.png"><br>
+Brief Introduction:<input type="text" name="summary" value=""><br>
+Application:<input type="text" name="purpose" value=""><br>
+Storage Condition:<input type="text" name="condition" value=""><br>
+images:<input type="text" name="images" value="/Uploads/User/20170901/59a8f65522204.png,/Uploads/User/20170901/59a8f65522204.png"><br>
+model:<input type="text" name="model" value=""><br>
+SKU:<br>
+specification:<input type="text" name="specification[]" value=""><br>
+price:<input type="text" name="price[]" value=""><br>
+weightUnit:<input type="text" name="weightUnit[]" value=""><br>
+moq:<input type="text" name="moq[]" value=""><br>
+inventoryType:<input type="text" name="inventoryType[]" value=""><br>
+inventory:<input type="text" name="inventory[]" value=""><br>
+packWeigth:<input type="text" name="packWeigth[]" value=""><br>
+<input type="submit">
+</form>
+</body>
+</html>

@@ -1,0 +1,79 @@
+    <php>
+        $_XXSource = array(
+            'product/index' => 'Mall',
+            'buyoffer/indexlist' => 'Buy offers',
+            'supply/lists' => 'Supply offers',
+            'supplier/lists' => 'Suppliers',
+        );
+        $x = strtolower( CONTROLLER_NAME ).'/'.strtolower( ACTION_NAME );
+        $matchTitle = '';
+        if(!empty($_XXSource[$x])){
+            $matchTitle = $_XXSource[$x];
+        }
+        if( !empty( $matchTitle ) ){
+            $_controllerAndAction = CONTROLLER_NAME.'/'.ACTION_NAME;
+        }else{
+            $_controllerAndAction = 'Product/index';
+            $matchTitle = 'Mall';
+        }
+
+        //$count=getUnReadMessage();
+    </php>
+    <div class="top-bar">
+
+        <div class="wrapper">
+            <span id="username">Hello ! Welcome to Keywa !</span>
+            <a href="#">Help</a>
+        </div>
+    </div>
+
+    <div class="header">
+        <div class="wrapper clearfix">
+            <div class="header-logo fl">
+                <a href="/"><img src="__PUBLIC__/Front/images/logo.png"></a>
+            </div>
+            <div class="header-search fl">
+                <form action="{:U($_controllerAndAction)}" class="clearfix" method="get" id="bg-header-search-form">
+                    <div class="header-search-sort fl">
+                        <span><em>{$matchTitle}</em><i></i></span>
+                        <div class="header-search-sort-list">
+                            <p><a href="javascript:;" id="bg-select-mall"  data-action="{:U( 'Product/index' )}">Mall</a></p>
+                            <p><a href="javascript:;" id="bg-select-buyoffers" data-action="{:U( 'Buyoffer/indexlist' )}">Buy offers</a></p>
+                            <p><a href="javascript:;" id="bg-select-supply" data-action="{:U( 'Supply/lists' )}">Supply offers</a></p>
+                        </div>
+                    </div>
+                    <input name="keyword" type="text" placeholder="I'm shopping for..." value="{:I('get.keyword', '', 'urldecode,htmlspecialchars')}">
+                    <button type="submit">??</button>
+                </form>
+                <div class="header-search-hot">
+                    <a href="{:U( 'Product/index', ['keyword'=> 'Albania'] )}">Albania</a>
+                    <a href="{:U( 'Product/index', ['keyword'=> 'Brazil'] )}">Brazil</a>
+                    <a href="{:U( 'Product/index', ['keyword'=> 'Gabon'] )}">Gabon</a>
+                    <a href="{:U( 'Product/index', ['keyword'=> 'India'] )}">India</a>
+                    <a href="{:U( 'Product/index', ['keyword'=> 'Singapore'] )}">Singapore</a>
+                    <a href="{:U( 'Product/index', ['keyword'=> 'Suriname'] )}">Suriname</a>
+                    <a href="{:U( 'Product/index', ['keyword'=> 'Libya'] )}">Libya</a>
+                </div>
+            </div>
+            <div class="header-uesr fl">
+                <i></i>
+                <p id="sign_wrap"><a href="/User/index/login.html">Sigh In</a><a href="/User/index/register.html">Join Free</a></p>
+                <p>My Keywa</p>
+            </div>
+            <div class="header-Favorites fr">
+                <a href="{:U('Home/my/product_collection')}"><i></i>Favorites<br>List</a>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var bgSearchForm =document.getElementById('bg-header-search-form');
+        document.getElementById('bg-select-mall').addEventListener('click',function(){
+            bgSearchForm.action = this.getAttribute('data-action');
+        });
+        document.getElementById('bg-select-buyoffers').onclick=function(){
+            bgSearchForm.action = this.getAttribute('data-action');
+        }
+        document.getElementById('bg-select-supply').onclick=function(){
+            bgSearchForm.action = this.getAttribute('data-action');
+        }
+    </script>

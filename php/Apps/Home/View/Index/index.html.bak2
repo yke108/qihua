@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/index.css">
+</head>
+
+<body>
+    <!----header---->
+
+    <include file="Public/index-head" />
+
+    <!----nav---->
+    <include file="Public/index-nav" />
+
+    <div class="home-slide wrapper">
+        <div class="home-slide-group">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><a href="javascript:;" target="_blank"><img src="__PUBLIC__/Front/images/pic3.jpg"></a></div>
+                    <div class="swiper-slide"><a href="javascript:;" target="_blank"><img src="__PUBLIC__/Front/images/pic3.jpg"></a></div>
+                    <div class="swiper-slide"><a href="javascript:;" target="_blank"><img src="__PUBLIC__/Front/images/pic3.jpg"></a></div>
+                    <div class="swiper-slide"><a href="javascript:;" target="_blank"><img src="__PUBLIC__/Front/images/pic3.jpg"></a></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+
+    <!----ADbanner---->
+    <div class="adbanner wrapper">
+    
+        <a href="#" target="_blank"><img src="__PUBLIC__/Front/images/pic2.jpg"></a>
+    
+    </div>
+
+    <!----hot's proucts---->
+    <div class="home-hot-proucts wrapper">
+        <div class="home-tit"><span>Hot’s Products</span><a href="{:U('Product/index')}">More<i></i></a></div>
+        <div class="home-hot-proucts-list">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <volist name="result['hotProducts']" id="vo">
+                    <div class="swiper-slide">
+                        <a href="{:U('Product/detail', ['id'=> $vo['id']])}">
+                            <span><i></i><img src="{$vo['thumb']}"></span>
+                            <p><font>{$vo['currency']}{$vo['price']}/{$vo['weightUnit']}</font></p>
+                            <p>{$vo['title']}</p>
+                        </a>
+                    </div>
+                    </volist>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+
+    <!----floor-list---->
+    <div class="home-items wrapper">
+        <div class="home-item home-item-1 clearfix" id="section-1">
+            <div class="home-item-l fl">
+                <a href="{:U('Product/index', ['categoryId'=> $result['categoryFloor'][0]['id']])}">
+                    <img src="__PUBLIC__/Front/images/pic5.jpg">
+                    <div class="home-item-tit">
+                        <span>
+                            <p>Daily<br>Chemicals</p>
+                            <em>More<i></i></em>
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="home-item-r fr">
+                <ul class="clearfix">
+                    <volist name="result['categoryFloor'][0]['products']" id="vo">
+                    <li>
+                        <a href="#">
+                            <span><i></i><img width="150" height="150" src="{$vo['thumb']}"></span>
+                            <p><font>{$vo['currency']}{$vo['price']}/{$vo['weightUnit']}</font></p>
+                            <p>{$vo['title']}</p>
+                        </a>
+                    </li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+
+        <!----ADbanner---->
+        <div class="adbanner wrapper">
+    
+            <a href="#" target="_blank"><img src="__PUBLIC__/Front/images/pic8.jpg"></a>
+            
+        </div>
+
+        <div class="home-item home-item-2 clearfix" id="section-2">
+            <div class="home-item-l fl">
+                <a href="{:U('Product/index', ['categoryId'=> $result['categoryFloor'][1]['id']])}">
+                    <img src="__PUBLIC__/Front/images/pic6.jpg">
+                    <div class="home-item-tit">
+                        <span>
+                            <p>Agrochemicals</p>
+                            <em>More<i></i></em>
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="home-item-r fr">
+                <ul class="clearfix">
+                    <volist name="result['categoryFloor'][1]['products']" id="vo">
+                    <li>
+                        <a href="#">
+                            <span><i></i><img width="150" height="150" src="{$vo['thumb']}"></span>
+                            <p><font>{$vo['currency']}{$vo['price']}/{$vo['weightUnit']}</font></p>
+                            <p>{$vo['title']}</p>
+                        </a>
+                    </li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+
+        <!----ADbanner---->
+        <div class="adbanner wrapper">
+
+            <a href="#" target="_blank"><img src="__PUBLIC__/Front/images/pic10.jpg"></a>
+
+        </div>
+
+        <div class="home-item home-item-3 clearfix" id="section-3">
+            <div class="home-item-l fl">
+                <a href="{:U('Product/index', ['categoryId'=> $result['categoryFloor'][2]['id']])}">
+                    <img src="__PUBLIC__/Front/images/pic7.jpg">
+                    <div class="home-item-tit">
+                        <span>
+                            <p>Petrochemicals</p>
+                            <em>More<i></i></em>
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="home-item-r fr">
+                <ul class="clearfix">
+                    <volist name="result['categoryFloor'][2]['products']" id="vo">
+                    <li>
+                        <a href="#">
+                            <span><i></i><img width="150" height="150" src="{$vo['thumb']}"></span>
+                            <p><font>{$vo['currency']}{$vo['price']}/{$vo['weightUnit']}</font></p>
+                            <p>{$vo['title']}</p>
+                        </a>
+                    </li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!----Our-Partner---->
+    <div class="home-our-partner wrapper">
+        <div class="home-tit"><span>Our Partner</span></div>
+        <div class="home-our-partner-info">
+            <p>Qiuhui network combined Ming Ling help Foundation, mobike cycling, the South Reading Fund, B advertising, public welfare tour, easy to paint and Ling Shiyou consulting,in the Ming Ling </p>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <volist name="result['partners']" id="vo">
+                    <div class="swiper-slide"><a href="javascript:;"><img width="205" height="140" src="{$vo['img']}"></a></div>
+                    </volist>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+    <!----How to trade on keywa?---->
+    <div class="home-trade wrapper">
+        <div class="home-tit"><span>How to trade on keywa?</span></div>
+        <div class="home-trade-info">
+            <p>March 2017, Qiu network and the "south wind window" co-sponsored "research China" - Qi network of special research projects to "industrial Internet, so that China from chemical power to chemical power" as a slogan, assembled enterprises, media ...</p>
+            <p><img src="__PUBLIC__/Front/images/pic12.jpg"></p>
+        </div>
+    </div>
+
+    <!----floor-nav---->
+    <div class="floor-nav">
+        <ul>
+            <li><a href="#section-1"><i class="icon1"></i><span>Daily Chemicals</span></a></li>
+            <li><a href="#section-2"><i class="icon2"></i><span>Agrochemicals</span></a></li>
+            <li><a href="#section-3"><i class="icon3"></i><span>Petrochemicals</span></a></li>
+            <li><a href="#section-4"><i class="icon4"></i><span>Environmental Products</span></a></li>
+            <li><a href="#section-5"><i class="icon5"></i><span>Medical Chemicals</span></a></li>
+            <li><a href="#section-6"><i class="icon6"></i><span>Food Chemicals</span></a></li>
+            <li><a href="#section-7"><i class="icon7"></i><span>Energy Chemicals</span></a></li>
+            <li><a href="#section-8"><i class="icon8"></i><span>Plastic Chemicals</span></a></li>
+        </ul>
+        <a href="javascript:;" class="go-top">
+            <span>TOP</span>
+            <i></i>
+        </a>
+    </div>
+
+    <!----footer---->
+    <include file="Public/footer" />
+    
+</div>
+
+</body>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/js/index.js"></script>
+</html>

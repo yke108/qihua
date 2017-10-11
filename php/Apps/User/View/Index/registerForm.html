@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册-填写注册信息</title>
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/register-03.css">
+</head>
+<body>
+    <!----header---->
+    <script type="text/javascript" src="__PUBLIC__/Front/lib/template-web.js"></script>
+<script type="text/javascript">window.$domain = 'http://kwen.t.weixinren.cn/'</script>
+
+    <div class="top-bar">
+        <div class="wrapper">
+            <span>Hello ! Welcome to Keywa !</span>
+            <a href="#">Help</a>
+        </div>
+    </div>
+
+
+
+    <!---register-main---->
+    <div class="register">
+        <div class="wrapper">
+            <div class="logo"><img src="__PUBLIC__/Front/images/logo.png"><span>Register</span></div>
+        </div>
+        <div class="register-banner"><img src="__PUBLIC__/Front/images/register-banner.jpg" width="100%"></div>
+        <div class="register-main">
+            <div class="wrapper">
+                <div class="register-process">
+                    <ul class="clearfix">
+                        <li class="current"><span>1</span>Set Email</li>
+                        <li class="current"><span>2</span>Fill in the information</li>
+                        <li><span>3</span>Registration is complete</li>
+                    </ul>
+                </div>
+                <div class="register-infomation">
+                    <form action="" method="post" id="register_form">
+                        <ul>
+                            <li><span>Log-in name</span><em class="name">{$email}</em></li>
+                            <li><span>Setting login password</span><input type="text" name="password" placeholder="Enter a 6 to 12 digit alphanumeric password"></li>
+                            <li><span></span><input type="text" name="repassword" placeholder="And then enter the password again"></li>
+                        </ul>
+                        <ul>
+                            <li><span>Company name</span><input type="text" name="companyName" placeholder="Please enter the name of the company on the business license"></li>
+                            <li><span>Your Name</span><input type="text" name="firstName" placeholder="" class="name"><input type="text" name="secondName" placeholder="" class="name"></li>
+                            <li><span>Cellphone number</span><input type="text" name="phone" placeholder=""></li>
+                            <li>
+                                <span>Fixed telephone</span><input type="text" name="foxedPhone"><i>-</i><input type="text" name="foxedPhone"><i>-</i><input type="text" name="foxedPhone">
+                            </li>
+                            <li>
+                                <span>Contact address</span><select name="areaId"><option></option></select><i>-</i><select><option></option></select><i>-</i><select><option></option></select>
+                            </li>
+                            <li>
+                                <span></span><textarea name="addressDetail" rows="8" placeholder="Can enter the detailed street"></textarea>
+                            </li>
+                            <li>
+                                <span></span>
+                                <label>
+                                    <input type="checkbox" name="agreen">
+                                    <em>
+                                        Create a website account, I agree：<br>
+                                        <font>-</font><b>Comply with <a href="#">en.keywa.com <Member agreement></a></b><br>
+                                        <font>-</font>Willing to receive relevant from <a href="#">en.keywa.com <Member and service mail></a>
+                                    </em>
+                                </label>
+                            </li>
+                            <li><span></span><button type="submit" class="keywa-btn keywa-btn-primary">Registered</button></li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!----footer---->
+    
+
+    <div class="login-footer">
+        <div class="copyright">Keywa.com © Copyright 2016 Keywa Inc. All rights reserved. ICP No.:GuangDong14005764</div>
+    </div>
+
+</body>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/js/register.js"></script>
+<script type="text/javascript">
+$('#register_form').bind('submit', function(){
+	var data = $(this).serialize();
+	$.post('http://kwen.t.weixinren.cn/' + 'user/index/register', data, function(d){
+	  if(d.code !== '000'){
+	    alert(d.message)
+	  } else {
+	    window.location.href = "{:U('register_04')}";
+	  }
+	}, 'json')
+	return false;
+});
+</script>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Media Report</title>
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/news.css">
+</head>
+<body>
+    <!----header---->
+    
+    <include file="Public/index-head" />
+
+
+    <!----nav---->
+    <include file="Public/index-nav" />
+
+    <!----news---->
+    <div class="about-us-banner"><img src="__PUBLIC__/Front/images/terms-banner.jpg" width="100%"></div>
+    <div class="news">
+        <div class="about-us-hd">
+            <ul class="clearfix">
+                <li><a href="{:U('Content/description')}"><i class="i1"></i><p>About us</p></a></li>
+                <li><a href="{:U('Content/contact')}"><i class="i2"></i><p>Contact us</p></a></li>
+                <li><a href="javascript:;" class="on"><i class="i3"></i><p>Media Report</p></a></li>
+            </ul>
+        </div>
+        <div class="news-content">
+            <div class="wrapper">
+                <h1>Keywa Information</h1>
+                <h2>Media Report</h2>
+                <div class="news-content-list" id="news-content-list">
+                    
+                </div>
+                <!----pages---->
+                <div id="pages-content">
+					
+				</div>
+            </div>
+        </div>
+    </div>
+
+    <!----footer---->
+    <include file="Public/footer" />
+
+
+</body>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/js/news.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/Home/js/template-web.js"></script>
+<script id="news-list" type="text/html">
+{{each data as value i}}
+	<a href="{{value.url}}">
+		<dl class="clearfix">
+			<dt><img src="{{value.img}}" width="250" height="160" alt=""></dt>
+			<dd>
+				<h3>{{value.title}}</h3>
+				<p>{{value.content}}</p>
+				<p><span>{{value.referer}}</span><em>|</em><time>{{value.reportDate}}</time></p>
+			</dd>
+		</dl>
+	</a>
+{{/each}}
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var data = {
+		
+	};
+	$.post("{$url}", data, function(d){
+		console.log(d);
+		if(d.code == '000'){
+			var html = template('news-list', d);
+			document.getElementById('news-content-list').innerHTML = html;
+			
+			//document.getElementById('pages-content').innerHTML = d.page_html;
+		}
+	}, 'json');
+});
+</script>
+
+<include file="Public/js" />
+
+</html>

@@ -1,0 +1,11 @@
+<script id="hot-commodity" type="text/html">
+{{each hotProducts as value i}}
+<li>
+	<a href="{{value.url}}">
+		<img src="{{value.thumb}}">
+		<p><span>${{value.price}}/{{value.weightUnit}}</span></p>
+		<p>{{value.title}}</p>
+	</a>
+</li>
+{{/each}}
+</script>

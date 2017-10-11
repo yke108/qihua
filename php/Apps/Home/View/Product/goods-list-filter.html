@@ -1,0 +1,13 @@
+<script id="goods-list-filter" type="text/html">
+<span>Filter</span><em>></em>
+{{if categoryList}}
+<a href="javascript:;" id="filter-Categories">Categories：{{each categoryList as value i}}{{if i == 0}}{{value.name}}{{else}} > {{value.name}}{{/if}}{{/each}}<i></i></a>
+{{/if}}
+{{if countryList}}
+<a href="javascript:;" id="filter-Country">Country：{{each countryList as value i}}{{if i == 0}}{{value.name}}{{else}}+{{value.name}}{{/if}}{{/each}}<i></i></a>
+{{/if}}
+{{if companyModelList}}
+<a href="javascript:;" id="filter-BusinessType">Business Type：{{each companyModelList as value i}}{{if i == 0}}{{value.name}}{{else}}+{{value.name}}{{/if}}{{/each}}<i></i></a>
+{{/if}}
+<span><font>{{count}}</font>results</span>
+</script>

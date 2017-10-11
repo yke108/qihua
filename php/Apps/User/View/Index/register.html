@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/register.css">
+</head>
+<body>
+    <!----header---->
+    <script type="text/javascript" src="__PUBLIC__/Front/lib/template-web.js"></script>
+<script type="text/javascript">window.$domain = 'http://kwen.t.weixinren.cn/'</script>
+
+    <div class="top-bar">
+        <div class="wrapper">
+            <span id="username">Hello ! Welcome to Keywa !</span>
+            <a href="#" class="lang"><i></i>中文</a>
+        </div>
+    </div>
+
+
+
+    <!---register-main---->
+    <div class="register">
+        <div class="wrapper">
+            <div class="logo"><a href="/"><img src="__PUBLIC__/Front/images/logo.png"></a><span>Register</span></div>
+        </div>
+        <div class="register-banner"><img src="__PUBLIC__/Front/images/register-banner.jpg" width="100%"></div>
+        <div class="register-main">
+            <div class="wrapper">
+                <div class="register-process">
+                    <ul class="clearfix">
+                        <li class="current"><span>1</span>Set Email</li>
+                        <li><span>2</span>Fill in the information</li>
+                        <li><span>3</span>Registration is complete</li>
+                    </ul>
+                </div>
+                <form id="reg_email_send">
+                    <ul>
+                        <li><span>Email</span><input type="text" name="email" placeholder="Enter the email for registration"></li>
+                        <li><span>verification</span><div id="code"></div></li>
+                        <li>
+                            <span></span>
+                            <label>
+                                <input type="checkbox" name="agree" value="1">
+                                <em>
+                                    Create a website account, I agree：<br>
+                                    <font>-</font><b>Comply with <a href="/">en.keywa.com <Member agreement></a></b><br>
+                                    <font>-</font>Willing to receive relevant from <a href="/">en.keywa.com <Member and service mail></a>
+                                </em>
+                            </label>
+                        </li>
+                        <li><span></span><button type="submit" class="keywa-btn keywa-btn-primary">Next Step</button></li>
+                    </ul>
+                </form>
+                <div class="register-send" style="display:none;">
+                    <p><b>The registration verification message has been sent</b></p>
+                    <h1 id="email_sended"></h1>
+                    <p><span>Please log in to the mailbox and activate the registration,<br>activate the connection within 24 hours.</span></p>
+                    <p><a href="#" class="keywa-btn keywa-btn-primary">Please check email</a><a href="register.html" class="emain-link">did not receive mail?</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!----footer---->
+    
+
+    <div class="login-footer">
+        <div class="copyright">Keywa.com © Copyright 2016 Keywa Inc. All rights reserved. ICP No.:GuangDong14005764</div>
+    </div>
+
+</body>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/template-web.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/alert/alert.js"></script>
+<script type="text/javascript">window.$domain = 'http://kwen.t.weixinren.cn/'</script>
+<script type="text/javascript">
+$.fn.serializeObject = function() {
+  var o = {};
+  var a = this.serializeArray();
+  $.each(a, function() {
+      if (o[this.name] !== undefined) {
+          if (!o[this.name].push) {
+              o[this.name] = [o[this.name]];
+          }
+          o[this.name].push(this.value || '');
+      } else {
+          o[this.name] = this.value || '';
+      }
+  });
+  return o;
+};
+$.post($domain + 'user/account/userDetail', {}, function(d){
+	 var data = {}
+	 if(d.code != '000'){ return }
+	 data = d.detail
+	 $('#username').html('<a href="/home/my/user.html" style="padding-right:5px;">'+ data.username +'</a>! Welcome to Keywa !')
+	 $('#sign_wrap').html('<a href="/home/my/user.html">Account</a><a href="/user/index/logout.html">Sign Out</a>')
+}, 'json')
+</script>
+<script type="text/javascript" src="__PUBLIC__/Front/js/register.js"></script>
+</html>

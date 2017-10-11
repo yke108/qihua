@@ -1,0 +1,9 @@
+<script type="text/javascript">
+$.post($domain + 'user/account/userDetail', {}, function(d){
+	 var data = {}
+	 if(d.code != '000'){ return }
+	 data = d.detail
+	 $('#username').html('<a href="/home/my/user.html" style="padding-right:5px;">'+ data.username +'</a>! Welcome to Keywa !')
+	 $('#sign_wrap').html('<a href="/home/my/user.html">Account</a><a href="/user/index/logout.html">Sign Out</a>')
+}, 'json')
+</script>

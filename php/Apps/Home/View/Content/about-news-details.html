@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Media Report - Detail</title>
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/news-detaild.css">
+</head>
+<body>
+    <!----header---->
+    <include file="Public/index-head" />
+
+
+    <!----nav---->
+    <include file="Public/index-nav" />
+
+    <!----news detaild---->
+    <div class="about-us-banner"><img src="__PUBLIC__/Front/images/terms-banner.jpg" width="100%"></div>
+    <div class="news-detaild" id="news-detaild-content">
+        
+    </div>
+
+    <!----footer---->
+    <include file="Public/footer" />
+
+
+</body>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/js/news.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/Home/js/template-web.js"></script>
+<include file="Content/news-detaild" />
+<script type="text/javascript">
+$(document).ready(function(){
+	var data = {
+		id:"{$id}"
+	};
+	$.post("{$url}", data, function(d){
+		console.log(d);
+		if(d.code == '000'){
+			var html = template('news-detaild', d);
+			document.getElementById('news-detaild-content').innerHTML = html;
+			
+			document.getElementById('news-detaild-content-info').innerHTML = d.data.content;
+		}
+	}, 'json');
+});
+</script>
+
+<include file="Public/js" />
+
+</html>

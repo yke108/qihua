@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>求购填写</title>
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/purchase-form.css">
+</head> 
+<body>
+    <!----header---->
+    <script type="text/javascript" src="__PUBLIC__/Front/lib/template-web.js"></script>
+<script type="text/javascript">window.$domain = 'http://kwen.t.weixinren.cn/'</script>
+
+    <div class="top-bar">
+        <div class="wrapper">
+            <span id="username">Hello ! Welcome to Keywa !</span>
+            <a href="#" class="lang"><i></i>中文</a>
+        </div>
+    </div>
+
+
+    <!---user---->
+    <div class="user">
+        <div class="logo"><div class="wrapper"><a href="/"><img src="__PUBLIC__/Front/images/logo.png"></a><span>My Keywa</span></div></div>
+        <div class="user-main clearfix wrapper">
+            <!----user-nav---->
+            <div class="user-nav fl">
+    <h1><a href="#" class="on">Dashboard</a></h1>
+    <ul>
+        <li>
+            <h2>My Account</h2>
+            <div class="user-nav-sub">
+                <p><a href="user.html">Profile</a></p>
+                <p><a href="certified_enterprise.html">License Info</a></p>
+            </div>
+        </li>
+        <li>
+            <h2>Order</h2>
+            <div class="user-nav-sub">
+            	<p><a href="inquiry_order.html">Inquiry order</a></p>
+                <p><a href="shipping_order.html">Shipping order</a></p>
+                
+            </div>
+        </li>
+        <li>
+            <h2>Settings</h2>
+            <div class="user-nav-sub">
+                <p><a href="change_password.html">Change Password</a></p>
+                <p><a href="manage_email.html">Manage Verfication Email Address</a></p>
+            </div>
+        </li>
+        <li>
+            <h2>Message</h2>
+            <div class="user-nav-sub">
+                <p><a href="system_infomation.html">Syetem Message(0)</a></p>
+                <p><a href="system_infomation.html">Mailbox(0)</a></p>
+            </div>
+        </li>
+        <li>
+            <h2><a href="product_collection.html">My Favorites</a></h2>
+        </li>
+        <li>
+            <h2><a href="my_purchase.html">My Buy Offers</a></h2>
+        </li>
+        <li>
+            <h2><a href="my_supply.html">My Supply Offers</a></h2>
+        </li>
+    </ul>
+</div>
+            <!---purchase-form---->
+            <div class="purchase-form fr">
+                <div class="user-tit">
+                    <span>New Supply</span>
+                </div>
+                <div class="purchase-form" id="purchase-form"></div>
+                <script type="text/html" id="tp-purchase-form">
+					<form action="" id="purchase-edit-form">
+    <ul>
+        <li><span class="type-name">Subject</span><input type="text" name="title" value="{{detail.title}}"></li>
+        <li><span class="type-name">Type</span><select class="chosen-select" style="width: 350px;" name="type">
+        <option></option>
+        {{each typeList vo ko}}
+        <option value="{{ko}}" {{if ko == detail.type}}selected{{/if}}>{{vo}}</option>
+        {{/each}}</select></li>
+        <li><span class="type-name">Location</span><input type="text" name="location" value="{{detail.location}}" placeholder="Please enter your location"></li>
+        <li>
+            <span class="type-name">Content</span>
+            <textarea rows="5" name="content" >{{detail.content}}</textarea>
+        </li>
+        <li>
+            <span class="type-name">image</span>
+            <div id="fileUploadContent" class="fileUploadContent mui-clearfix"></div>
+        </li>
+        <li><span class="type-name">Period of validity</span><select class="chosen-select" style="width: 350px;" name="expire">
+        <option></option>
+        {{each expireList vo ko}}
+        <option value="{{ko}}" {{if ko == detail.expire}}selected{{/if}}>{{vo}}</option>
+        {{/each}}
+        </select></li>
+        <li><span class="type-name"></span>
+        <input type="hidden" name="id" value="{{detail.id}}"/>
+        <button type="submit" class="keywa-btn keywa-btn-primary">Submit</button><a href="my_purchase.html" class="keywa-btn">Cancel</a></li>
+    </ul>
+</form>
+				</script>
+            </div> 
+        </div> 
+    </div>
+    <!----footer---->
+    
+    <div class="footer">
+        <div class="wrapper">
+            <div class="footer-hd clearfix">
+                <div class="footer-hd-l fl"><a href="#"><img src="__PUBLIC__/Front/images/footer-logo.png"></a></div>
+                <div class="footer-hd-r fl">
+                    <ul class="clearfix">
+                        <li>
+                            <p><span>About Keywa</span></p>
+                            <p><a href="#">About us</a></p>
+                            <p><a href="#">Contact us</a></p>
+                            <p><a href="#">Media Report</a></p>
+                            <p><a href="#">Terms of Use</a></p>
+                            <p><a href="#">Legal statement</a></p>
+                        </li>
+                        <li>
+                            <p><em>Support</em></p>
+                            <p><b><a href="mailto:service@keywa.com">Email: service@keywa.com</a></b></p>
+                            <p><b><a href="tel:+86 4008-488-999" target="_blank">Tel：+86 4008-488-999</a></b></p>
+                        </li>
+                        <li>
+                            <p><span>Language</span></p>
+                            <p><a href="#"><i class="cn"></i>中文</a></p>
+                            <p><a href="#"><i class="en"></i>English</a></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bd">
+                <div class="copyright">Keywa.com © Copyright 2016 Keywa Inc. All rights reserved. ICP No.:GuangDong14005764</div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/template-web.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/alert/alert.js"></script>
+<script type="text/javascript">window.$domain = 'http://kwen.t.weixinren.cn/'</script>
+<script type="text/javascript">
+$.fn.serializeObject = function() {
+  var o = {};
+  var a = this.serializeArray();
+  $.each(a, function() {
+      if (o[this.name] !== undefined) {
+          if (!o[this.name].push) {
+              o[this.name] = [o[this.name]];
+          }
+          o[this.name].push(this.value || '');
+      } else {
+          o[this.name] = this.value || '';
+      }
+  });
+  return o;
+};
+$.post($domain + 'user/account/userDetail', {}, function(d){
+	 var data = {}
+	 if(d.code != '000'){ return }
+	 data = d.detail
+	 $('#username').html('<a href="/home/my/user.html" style="padding-right:5px;">'+ data.username +'</a>! Welcome to Keywa !')
+	 $('#sign_wrap').html('<a href="/home/my/user.html">Account</a><a href="/user/index/logout.html">Sign Out</a>')
+}, 'json')
+</script>
+<script type="text/javascript" src="__PUBLIC__/Front/js/purchase-form.js"></script>
+<script type="text/javascript">
+var str = location.hash; 
+var idstr = ''
+if(str.length > 1) idstr = str.substring(1);
+$.post($domain + 'user/buyoffer/getDetail', {id:idstr}, function(d){
+  if(d.code != '000') d = {};
+  html = template('tp-purchase-form', d)
+  $('#purchase-form').html(html)
+  $.initPurchaseForm()
+  $('#purchase-edit-form').bind('submit', function(){
+    var data = $(this).serialize();
+    $.post($domain + 'user/buyoffer/modify', data, function(d){
+      alert(d.message);
+    }, 'json')
+    return false;
+  })
+}, 'json')
+</script>
+</html>

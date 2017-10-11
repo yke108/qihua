@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/login.css">
+</head>
+<body>
+    <!----header---->
+    <script type="text/javascript" src="__PUBLIC__/Front/lib/template-web.js"></script>
+<script type="text/javascript">window.$domain = 'http://kwen.t.weixinren.cn/'</script>
+
+    <div class="top-bar">
+        <div class="wrapper">
+            <span id="username">Hello ! Welcome to Keywa !</span>
+            <a href="#" class="lang"><i></i>中文</a>
+        </div>
+    </div>
+
+
+
+    <!---login-main---->
+    <div class="login wrapper">
+        <div class="logo"><a href="/"><img src="__PUBLIC__/Front/images/logo.png"></a><span>Login</span></div>
+        <dl class="clearfix">
+            <dt><img src="__PUBLIC__/Front/images/l-pic1.png"></dt>
+            <dd>
+                <form action="" id="login_form">
+                    <h1>Login Keywa</h1>
+                    <ul>
+                        <li>
+                            <label>Email：</label>
+                            <input type="text" name="username" placeholder="Email address">
+                        </li>
+                        <li>
+                            <label>Password：</label>
+                            <input type="password" name="password" placeholder="Password">
+                        </li>
+                        <li><button type="submit" class="keywa-btn keywa-btn-block keywa-btn-primary">Sign In</button></li>
+                        <li><a href="forget_password.html">Forgot Password?</a><a href="register.html" class="fr">Join Free Now!</a></li>
+                    </ul>
+                </form>
+            </dd>
+        </dl>
+    </div>
+
+    <!----footer---->
+    
+
+    <div class="login-footer">
+        <div class="copyright">Keywa.com © Copyright 2016 Keywa Inc. All rights reserved. ICP No.:GuangDong14005764</div>
+    </div>
+
+</body>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/template-web.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/alert/alert.js"></script>
+<script type="text/javascript">window.$domain = 'http://kwen.t.weixinren.cn/'</script>
+<script type="text/javascript">
+$.fn.serializeObject = function() {
+  var o = {};
+  var a = this.serializeArray();
+  $.each(a, function() {
+      if (o[this.name] !== undefined) {
+          if (!o[this.name].push) {
+              o[this.name] = [o[this.name]];
+          }
+          o[this.name].push(this.value || '');
+      } else {
+          o[this.name] = this.value || '';
+      }
+  });
+  return o;
+};
+$.post($domain + 'user/account/userDetail', {}, function(d){
+	 var data = {}
+	 if(d.code != '000'){ return }
+	 data = d.detail
+	 $('#username').html('<a href="/home/my/user.html" style="padding-right:5px;">'+ data.username +'</a>! Welcome to Keywa !')
+	 $('#sign_wrap').html('<a href="/home/my/user.html">Account</a><a href="/user/index/logout.html">Sign Out</a>')
+}, 'json')
+</script> 
+<script type="text/javascript" src="__PUBLIC__/Front/js/login.js"></script>
+</html>

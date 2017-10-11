@@ -1,0 +1,34 @@
+<script id="supply-offers-detaild" type="text/html">
+<div class="supply-offers-detaild-hd">
+	<dl class="clearfix">
+		<dt><img src="{{data.image}}"></dt>
+		<dd>
+			<h1>{{data.title}}</h1>
+			<div class="name clearfix">
+				<img src="{{data.img}}" width="60" height="60">
+				<div class="name-info">
+					<h2>{{data.username}}</h2>
+					<p>{{data.companyName}}<span><i></i>Verified</span></p>
+				</div>
+			</div>
+			<ol>
+				<li><span>Info.No.:</span><em>{{data.number}}</em></li>
+				<li><span>Post:</span><em>{{data.postTime}}</em></li>
+				<li><span>Exp:</span><em>{{data.expireTime}}</em></li>
+				<li><span>Type:</span><em>{{data.type}}</em></li>
+				<li><span>Location:</span><em>{{data.location}}</em></li>
+			</ol>
+			{{if data.showContact}}
+			<p><a href="#" class="keywa-btn keywa-btn-primary"><i></i>Contact Now</a></p>
+			{{/if}}
+			<p><a href="javascript:;" class="collection" isLogin="{{data.isLogin}}" isCollect="{{data.isCollect}}"><i></i>Add to Favorites List</a></p>
+		</dd>
+	</dl>
+</div>
+<div class="supply-offers-detaild-bd">
+	<h1>Details</h1>
+	<div class="supply-offers-detaild-bd-info" id="supply-offers-detaild-bd-info">
+		
+	</div>
+</div>
+</script>

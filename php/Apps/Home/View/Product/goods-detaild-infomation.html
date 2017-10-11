@@ -1,0 +1,47 @@
+<script id="goods-detaild-infomation" type="text/html">
+<form action="">
+	<div class="goods-detaild-infomation-hd">
+		<h1>{{title}}</h1>
+		<h2><span>Cas No : {{cas}} </span><span>Product Number : {{productCode}}</span><span>Sold : {{sales}}</span></h2>
+		<div class="goods-detaild-price">
+			<span>Dicount<br>Price：</span>
+			<em id="dicount_price">${{skuList[0].price}}/{{skuList[0].weightUnit}}</em>
+		</div>
+		<div class="goods-detaild-tips">Tips: The Final Sale Price depens on the Bilateral Negotiation</div>
+	</div>
+	<div class="goods-detaild-infomation-bd">
+		<ul>
+			<li><span>Suppliers：</span><em>{{companyName}}</em></li>
+			<li><span>Location：</span><em>{{location}}</em></li>
+			<li><span>Stock：</span><em>{{skuList[0].stock}}</em></li>
+			<li>
+				<span>Specification：</span>
+				<em id="Specification">
+					{{each skuList as value i}}
+					<a href="javascript:;" {{if value.isDefault == 1}}class="on"{{/if}} skuId="{{value.skuId}}" price="{{value.price}}" weightUnit="{{value.weightUnit}}" stock="{{value.stock}}" moq="{{value.moq}}" packWeight="{{value.packWeight}}" inquiryUrl="{{value.inquiryUrl}}">{{value.specification}}</a>
+					{{/each}}
+				</em>
+			</li>
+			<li><span>Quantity:：</span><div class="spinner"></div><font>5 tont/Sets sealing machine (Min. Order)</font></li>
+			<li><span>Total Price：</span><em><b id="total_price">${{skuList[0].price * skuList[0].moq}}</b></em></li>
+		</ul>
+	</div>
+	<div class="goods-detaild-btn">
+		<a href="/home/my/write_inquiry.html" class="keywa-btn keywa-btn-primary inquiry"><i></i>Contact Supplier</a>
+		<a href="/home/my/write_order.html" class="keywa-btn keywa-btn-blue start_order">Start Order</a>
+		<a href="javascript:;" class="collection" isCollect="{{isCollect}}" isLogin="{{isLogin}}"><i></i>Add to Favorites List</a>
+	</div>
+	<div class="goods-detaild-infomation-bd">
+		<ul>
+			<li>
+				<span>Payment：</span>
+				<em>
+					{{each payway as value i}}
+					<i {{if i == 0}}class="color"{{/if}}>{{value}}</i>
+					{{/each}}
+				</em>
+			</li>
+		</ul>
+	</div>
+</form>
+</script>

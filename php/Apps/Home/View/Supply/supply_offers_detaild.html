@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>求购原料-详情</title>
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/supply-offers-detaild.css">
+</head>
+<body>
+    <!----header---->
+    <script type="text/javascript" src="__PUBLIC__/Front/lib/template-web.js"></script>
+<script type="text/javascript">window.$domain = 'http://kwen.t.weixinren.cn/'</script>
+
+    <div class="top-bar">
+        <div class="wrapper">
+            <span id="username">Hello ! Welcome to Keywa !</span>
+            <a href="#" class="lang"><i></i>中文</a>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="__PUBLIC__/Front/lib/template-web.js"></script>
+<script type="text/javascript">window.$domain = 'http://kwen.t.weixinren.cn/'</script>
+
+
+    <div class="header">
+        <div class="wrapper clearfix">
+            <div class="header-logo fl">
+                <a href="/"><img src="__PUBLIC__/Front/images/logo.png"></a>
+            </div>
+            <div class="header-search fl">
+                <form action="#" class="clearfix">
+                    <div class="header-search-sort fl">
+                        <span><em>Mall</em><i></i></span>
+                        <div class="header-search-sort-list">
+                            <p><a href="javascript:;">Mall1</a></p>
+                            <p><a href="javascript:;">Mall2</a></p>
+                            <p><a href="javascript:;">Mall3</a></p>
+                            <p><a href="javascript:;">Mall4</a></p>
+                            <p><a href="javascript:;">Mall5</a></p>
+                        </div>
+                    </div>
+                    <input type="text" placeholder="I'm shopping for...">
+                    <button type="submit">??</button>
+                </form>
+                <div class="header-search-hot">
+                    <a href="#">Albania</a>
+                    <a href="#">Brazil</a>
+                    <a href="#">Gabon</a>
+                    <a href="#">India</a>
+                    <a href="#">Singapore</a>
+                    <a href="#">Suriname</a>
+                    <a href="#">Libya</a>
+                </div>
+            </div>
+            <div class="header-uesr fl">
+                <i></i>
+                <p id="sign_wrap"><a href="/User/index/login.html">Sigh In</a><a href="/User/index/register.html">Join Free</a></p>
+                <p>My Keywa</p>
+            </div>
+            <div class="header-Favorites fr">
+                <a href="/Home/my/product_collection.html"><i></i>Favorites<br>List</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!----nav---->
+    <div class="nav" id="nav-box"></div>
+    <script type="text/html" id="tp-nav-box">
+		<div class="wrapper clearfix">
+    <div class="nav-sort fl">
+        <h1><i></i>All Categories</h1>
+        <div class="nav-sort-list">
+            <ul>
+            	{{each data vo ko}}
+                <li><a href="{{vo.url}}"><i class="icon{{ko + 1}}"></i>{{vo.text}}</a></li>
+                {{/each}}
+            </ul>
+            <ol>
+            	{{each data vo ko}}
+                <li>
+                    <div class="nav-sort-item clearfix">
+                        <div class="nav-sort-item-l fl">
+                        	{{each vo.children fvo fko}}
+                            <div class="nav-sort-item-l-sub">
+                                <h3><a href="{{fvo.url}}">{{fvo.text}}</a></h3>
+                                <p>
+                                	{{each fvo.children svo sko}}
+                                    <a href="{{svo.url}}">{{svo.text}}</a>
+                                    {{/each}}
+                                </p>
+                            </div>
+                            {{/each}}
+                        </div>
+                        <div class="nav-sort-item-r fl">
+                           	{{each vo.products product}}
+                            <div class="nav-sort-item-r-sub">
+                                <a href="{{product.url}}">
+                                    <div class="item-r-info">
+                                        <p>{{product.title}}</p>
+                                        <span>{{product.currency}}{{product.price}}/{{product.weightUnit}}</span>
+                                    </div>
+                                    <img src="{{product.thumb}}" style="max-width:120px;max-height:120px;">
+                                </a>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </li>
+                {{/each}}
+            </ol>
+        </div>
+    </div>
+    <div class="nav-menu fl">
+        <ul class="clearfix">
+            <li><a href="/" >Home</a></li>
+            <li><a href="/product/index" >Mall</a></li>
+            <li><a href="/Buyoffer/indexlist" >Buy Offers</a></li>
+            <li><a href="/Supply/lists" class="on">Supply offers</a></li>
+            <li><a href="/Content/about_us" >About us</a></li>
+            <li><a href="/Content/terms" >Terms of Use</a></li>
+        </ul>
+    </div>
+</div>
+	</script>
+
+    <!----supply-offers-detaild---->
+    <div class="supply-offers-detaild-position">
+        <div class="wrapper">
+            <a href="#">Supply offers</a><em>></em><span>Details</span>
+        </div>
+    </div>
+    <div class="supply-offers-detaild wrapper" id="supply-offers-detaild-content"></div>
+    <script id="supply-offers-detaild" type="text/html">
+		<div class="supply-offers-detaild-hd">
+	<dl class="clearfix">
+		<dt><img src="{{data.image}}"></dt>
+		<dd>
+			<h1>{{data.title}}</h1>
+			<div class="name clearfix">
+				<img src="{{data.img}}" width="60" height="60">
+				<div class="name-info">
+					<h2>{{data.username}}</h2>
+					<p>{{data.companyName}}<span><i></i>Verified</span></p>
+				</div>
+			</div>
+			<ol>
+				<li><span>Info.No.:</span><em>{{data.number}}</em></li>
+				<li><span>Post:</span><em>{{data.postTime}}</em></li>
+				<li><span>Exp:</span><em>{{data.expireTime}}</em></li>
+				<li><span>Type:</span><em>{{data.type}}</em></li>
+				<li><span>Location:</span><em>{{data.location}}</em></li>
+			</ol>
+			{{if data.showContact}}
+			<p><a href="javascript:;" class="keywa-btn keywa-btn-primary contact-pop-btn"><i></i>Contact Now</a></p>
+			{{/if}}
+			<p><a href="javascript:;" class="collection" isLogin="{{data.isLogin}}" isCollect="{{data.isCollect}}"><i></i>Add to Favorites List</a></p>
+		</dd>
+	</dl>
+</div>
+<div class="supply-offers-detaild-bd">
+	<h1>Details</h1>
+	<div class="supply-offers-detaild-bd-info" id="supply-offers-detaild-bd-info">{{@data.content}}</div>
+</div>
+	</script>
+
+    <!----footer---->
+    <div class="contact-pop">
+    <i class="close"></i>
+    <dl class="clearfix">
+        <dt><img src="{{data.img}}" width="60" height="60"></dt>
+        <dd>
+            <h2>{{data.username}}</h2>
+            <p>{{data.companyName}}<span><i></i>Verified</span></p>
+        </dd>
+    </dl>
+    <table width="100%">
+        <tr>
+            <td width="120" bgcolor="#f8fbff">Company Name:</td>
+            <td width="310">Shanghai Jialun Chemical Trade Co., Ltd</td>
+            <td width="90" bgcolor="#f8fbff">Principal:</td>
+            <td>Jialun</td>
+        </tr>
+        <tr>
+            <td bgcolor="#f8fbff">Company Address:</td>
+            <td>C1-9、C1-10、C1-11-1, Foshan National Torch Innovation Pioneering Park, No.13 Huabao South Road,Chancheng District, Foshan, China</td>
+            <td bgcolor="#f8fbff">Service Hotline:</td>
+            <td>020-82598600</td>
+        </tr>
+        <tr>
+            <td bgcolor="#f8fbff">Telephone:</td>
+            <td>0757-63812329</td>
+            <td bgcolor="#f8fbff">Fax:</td>
+            <td>0757-63812328</td>
+        </tr>
+        <tr>
+            <td bgcolor="#f8fbff">Email:</td>
+            <td>qihua@keywa.com</td>
+            <td bgcolor="#f8fbff"></td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+<div class="mask"></div>
+
+    <!----footer---->
+    
+    <div class="footer">
+        <div class="wrapper">
+            <div class="footer-hd clearfix">
+                <div class="footer-hd-l fl"><a href="#"><img src="__PUBLIC__/Front/images/footer-logo.png"></a></div>
+                <div class="footer-hd-r fl">
+                    <ul class="clearfix">
+                        <li>
+                            <p><span>About Keywa</span></p>
+                            <p><a href="#">About us</a></p>
+                            <p><a href="#">Contact us</a></p>
+                            <p><a href="#">Media Report</a></p>
+                            <p><a href="#">Terms of Use</a></p>
+                            <p><a href="#">Legal statement</a></p>
+                        </li>
+                        <li>
+                            <p><em>Support</em></p>
+                            <p><b><a href="mailto:service@keywa.com">Email: service@keywa.com</a></b></p>
+                            <p><b><a href="tel:+86 4008-488-999" target="_blank">Tel：+86 4008-488-999</a></b></p>
+                        </li>
+                        <li>
+                            <p><span>Language</span></p>
+                            <p><a href="#"><i class="cn"></i>中文</a></p>
+                            <p><a href="#"><i class="en"></i>English</a></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bd">
+                <div class="copyright">Keywa.com © Copyright 2016 Keywa Inc. All rights reserved. ICP No.:GuangDong14005764</div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/template-web.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/alert/alert.js"></script>
+<script type="text/javascript">window.$domain = 'http://kwen.t.weixinren.cn/'</script>
+<script type="text/javascript">
+$.fn.serializeObject = function() {
+  var o = {};
+  var a = this.serializeArray();
+  $.each(a, function() {
+      if (o[this.name] !== undefined) {
+          if (!o[this.name].push) {
+              o[this.name] = [o[this.name]];
+          }
+          o[this.name].push(this.value || '');
+      } else {
+          o[this.name] = this.value || '';
+      }
+  });
+  return o;
+};
+$.post($domain + 'user/account/userDetail', {}, function(d){
+	 var data = {}
+	 if(d.code != '000'){ return }
+	 data = d.detail
+	 $('#username').html('<a href="/home/my/user.html" style="padding-right:5px;">'+ data.username +'</a>! Welcome to Keywa !')
+	 $('#sign_wrap').html('<a href="/home/my/user.html">Account</a><a href="/user/index/logout.html">Sign Out</a>')
+}, 'json')
+</script>
+<script type="text/javascript" src="__PUBLIC__/Front/js/supply-offers-detaild.js"></script>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{$page_title}</title>
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/goods-dateild.css">
+	<style type="text/css">
+	.goods-detaild-infomation .goods-detaild-infomation-bd ul li .spinner input{height:30px; line-height:30px;}
+	.goods-detaild-l-con .table td span{word-wrap: break-word;}
+	</style>
+</head>
+<body>
+    <!----header---->
+    <include file="Public/index-head" />
+
+
+    <!----nav---->
+    <include file="Public/index-nav" />
+
+
+    <!----goods-detaild---->
+    <div class="goods-detaild">
+        <div class="goods-detaild-position">
+            <div class="wrapper" id="wrapper-content">
+                <include file="Product/wrapper" />
+            </div>
+        </div>
+        <div class="goods-detaild-hd clearfix wrapper">
+            <div class="preview fl">
+                <div id="vertical" class="bigImg">
+                    <img src="" alt="" id="midimg" />
+                </div>
+                <div class="smallImg clearfix">
+                    <div class="scrollbutton smallImgUp disabled"></div>
+                    <div id="imageMenu">
+                        <ul class="clearfix" id="images-list">
+                            
+                        </ul>
+                    </div>
+                    <div class="scrollbutton smallImgDown disabled"></div>
+                </div>
+            </div>
+            <div class="goods-detaild-infomation fl" id="goods-detaild-infomation-content">
+                <include file="Product/goods-detaild-infomation" />
+            </div>
+        </div>
+        <div class="goods-detaild-bd clearfix wrapper">
+            <div class="goods-detaild-l fl">
+                <div class="goods-detaild-l-tabs">
+                    <ul class="clearfix">
+                        <li><a href="javascript:;" name="#tab1">Description</a></li>
+                        <li><a href="javascript:;" name="#tab2">Q&A</a></li>
+                    </ul>
+                </div>
+                <div class="goods-detaild-l-con">
+                    <div id="tab1" class="hidden">
+                        <include file="Product/goods-description" />
+                    </div>
+                    <div id="tab2" class="hidden">
+                        <include file="Product/faq" />
+                    </div>
+                </div>
+            </div>
+            <div class="goods-detaild-r fr">
+                <h2>Hot Commodity</h2>
+                <ul id="hot-commodity-content">
+                    <include file="Product/hot-commodity" />
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!----footer---->
+    <include file="Public/footer" />
+
+
+</body>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/js/goods-dateild.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/Home/js/template-web.js"></script>
+<script src="__PUBLIC__/Front/lib/spinner/jquery.Spinner.js"></script>
+<script id="bigImg" type="text/html">
+{{images[0]}}
+</script>
+<script id="images" type="text/html">
+{{each images as value i}}<li {{if i == 0}}id="onlickImg"{{/if}}><img src="{{value}}" width="104" height="104" alt=""/></li>{{/each}}
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var data = {
+		id:"{$id}",
+	};
+	$.post("{$url}", data, function(d){
+		if(d.code == '000'){
+			var html = template('wrapper', d);
+			document.getElementById('wrapper-content').innerHTML = html;
+			
+			var html = template('bigImg', d);
+			document.getElementById('midimg').src = html;
+			
+			var html = template('images', d);
+			if(d.images.length == 1){
+				$('#imageMenu').css('display', 'none');
+			}else{
+				document.getElementById('images-list').innerHTML = html;
+			}
+			
+			var html = template('goods-detaild-infomation', d);
+			document.getElementById('goods-detaild-infomation-content').innerHTML = html;
+			
+			var html = template('goods-description', d);
+			document.getElementById('tab1').innerHTML = html;
+			
+			var html = template('faq', d);
+			document.getElementById('tab2').innerHTML = html;
+			
+			var html = template('hot-commodity', d);
+			document.getElementById('hot-commodity-content').innerHTML = html;
+			
+			$("#Specification a").click(function(){
+				var price = $(this).attr('price');
+				var weightunit = $(this).attr('weightunit');
+				$('#dicount_price').html('$'+price+'/'+weightunit);
+				
+				var number = $('.Amount').val();
+				$('#total_price').html('$'+price*number);
+			});
+			
+			var moq = $('#Specification a.on').attr('moq');
+			var stock = $('#Specification a.on').attr('stock');
+			$(".spinner").Spinner({value:moq, min:moq, len:3, max:9999})
+			
+			$(".Amount").bind('input oninput',function(){
+				var price = $('#Specification a.on').attr('price');
+				var number = $('.Amount').val();
+				$('#total_price').html('$'+price*number);
+			});
+			$(".Decrease").click(function(){
+				var price = $('#Specification a.on').attr('price');
+				var number = $('.Amount').val();
+				$('#total_price').html('$'+price*number);
+			});
+			$(".Increase").click(function(){
+				var price = $('#Specification a.on').attr('price');
+				var number = $('.Amount').val();
+				$('#total_price').html('$'+price*number);
+			});
+			
+			$(".inquiry").click(function(){
+				var href = $(this).attr('href');
+				var skuid = $('#Specification a.on').attr('skuid');
+				var number = $('.Amount').val();
+				href = href.replace('sskuId', skuid);
+				href = href.replace('sproductNumber', number);
+				window.location.href = href;
+				return false;
+			});
+			
+			$(".start_order").click(function(){
+				var href = $(this).attr('href');
+				var skuid = $('#Specification a.on').attr('skuid');
+				var number = $('.Amount').val();
+				href = href.replace('sskuId', skuid);
+				href = href.replace('sproductNumber', number);
+				window.location.href = href;
+				return false;
+			});
+			
+			$(".collection").click(function(){
+				var collectionObj = $(this);
+				var iscollect = $(this).attr('iscollect');
+				if(iscollect == 1){
+					alert('Haved Collected');return false;
+				}
+				var islogin = $(this).attr('islogin');
+				if(islogin == 0){
+					window.location.href = "{:U('User/Index/login')}";
+				}
+				
+				var id = "{$id}";
+				$.post("{:U('user/collect/addCollect')}", {id:id, type:1}, function(d){
+					alert(d.message);
+					if(d.code == '000'){
+						collectionObj.attr('iscollect', 1);
+					}
+				}, 'json');
+				
+				return false;
+			});
+			
+			$.pageinit();
+		}
+	}, 'json');
+});
+</script>
+
+<include file="Public/js" />
+
+</html>

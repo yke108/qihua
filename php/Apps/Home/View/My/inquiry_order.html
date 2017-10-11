@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inquiry List</title>
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/inquiry-order.css">
+</head>
+<body>
+    <!----header---->
+    <script type="text/javascript" src="__PUBLIC__/Front/lib/template-web.js"></script>
+<script type="text/javascript">window.$domain = 'http://kwen.t.weixinren.cn/'</script>
+
+    <div class="top-bar">
+        <div class="wrapper">
+            <span id="username">Hello ! Welcome to Keywa !</span>
+            <a href="#" class="lang"><i></i>中文</a>
+        </div>
+    </div>
+
+
+    <!---user---->
+    <div class="user">
+        <div class="logo"><div class="wrapper"><a href="/"><img src="__PUBLIC__/Front/images/logo.png"></a><span>My Keywa</span></div></div>
+        <div class="user-main clearfix wrapper">
+            <!----user-nav---->
+            <div class="user-nav fl">
+    <h1><a href="#" class="on">Dashboard</a></h1>
+    <ul>
+        <li>
+            <h2>My Account</h2>
+            <div class="user-nav-sub">
+                <p><a href="user.html">Profile</a></p>
+                <p><a href="certified_enterprise.html">License Info</a></p>
+            </div>
+        </li>
+        <li>
+            <h2>Order</h2>
+            <div class="user-nav-sub">
+            	<p><a href="inquiry_order.html">Inquiry order</a></p>
+                <p><a href="shipping_order.html">Shipping order</a></p>
+                
+            </div>
+        </li>
+        <li>
+            <h2>Settings</h2>
+            <div class="user-nav-sub">
+                <p><a href="change_password.html">Change Password</a></p>
+                <p><a href="manage_email.html">Manage Verfication Email Address</a></p>
+            </div>
+        </li>
+        <li>
+            <h2>Message</h2>
+            <div class="user-nav-sub">
+                <p><a href="system_infomation.html">Syetem Message(0)</a></p>
+                <p><a href="system_infomation.html">Mailbox(0)</a></p>
+            </div>
+        </li>
+        <li>
+            <h2><a href="product_collection.html">My Favorites</a></h2>
+        </li>
+        <li>
+            <h2><a href="my_purchase.html">My Buy Offers</a></h2>
+        </li>
+        <li>
+            <h2><a href="my_supply.html">My Supply Offers</a></h2>
+        </li>
+    </ul>
+</div>
+
+            <!---inquiry-order---->
+            <div class="user-inquiry-order fr">
+                <div class="user-inquiry-order-tabs">
+                    <form action="" class="fr">
+                        <span>A total of <em>4</em> records</span>
+                        <input type="text" name="" placeholder="Search for sender, inquiry ID">
+                        <button type="submit"></button>
+                    </form>
+                    <ul class="clearfix">
+                        <li><a href="javascript:;" class="on">All</a></li>
+                        <li><a href="javascript:;">New inquiry</a></li>
+                        <li><a href="javascript:;">Orderer</a></li>
+                        <li><a href="javascript:;">Close</a></li>
+                    </ul>
+                </div>
+                <div class="user-inquiry-order-ability">
+                    <span><label><input type="checkbox"><i></i></label></span>
+                    <a href="javascript:;" class="del">Delete</a>
+                    <em><label><input type="checkbox"><i></i>Unread inquiry</label></em>
+                    <a href="javascript:;" class="refresh"><i></i></a>
+                </div>
+                <div class="user-box">
+                    <table class="order" width="100%">
+                        <thead>
+                            <tr>
+                                <th align="left" colspan="2">Date<i></i></th>
+                                <th align="center">country<i></i></th>
+                                <th align="center">owner<i></i></th>
+                                <th align="center">status<i></i></th>
+                                <th align="center">Action<i></i></th>
+                            </tr>
+                        </thead>
+                        <tbody id="inquiry-list"></tbody>
+                    </table>
+                    <script type="text/html" id="tp-inquiry-list">{{each list vo ko}}
+<tr>
+    <td colspan="5" class="sep-row"></td>
+</tr>
+<tr>
+    <th colspan="6" align="left">
+        <time><label><input type="checkbox"><i></i>{{vo.addTime}}</label></time>
+        <span>Main Order ID：</em><font>{{vo.inquirySn}}</font></span>
+    </th>
+</tr>
+	{{set rowspan = vo.productList.length}}
+	{{each vo.productList product pkey}}
+	<tr>
+	    <td width="290">
+	        <dl>
+	            <dt><img src="{{product.image}}"></dt>
+	            <dd>
+	                <a href="/home/product/detail.html#{{product.productId}}" target="_blank">{{product.title}}</a>
+	                <p></p>
+	            </dd>
+	        </dl>
+	    </td>
+	    {{if pkey < 1}}
+	    <td width="90" align="center" rowspan="{{rowspan}}">
+	        <b>Andy Lua</b>
+	        <p><b>(keywa)</b></p>
+	    </td>
+	    <td width="90" align="center" rowspan="{{rowspan}}"><b>{{vo.country}}</b></td>
+	    <td width="90" align="center" rowspan="{{rowspan}}"><b>{{vo.seller}}</b></td>
+	    <td width="90" align="center" rowspan="{{rowspan}}"><b>{{vo.state}}</b></td>
+	    <td align="center" rowspan="{{rowspan}}">
+	        <p><a href="inquiry_order_detaild.html" rid="{{vo.inquiryId}}" class="keywa-btn keywa-btn-primary inquiry-view">View</a></p>
+	        <p><a href="javascript:;" rid="{{vo.inquiryId}}" class="keywa-btn inquiry-close">End</a></p>
+	    </td>
+	    {{/if}}
+	</tr>
+	{{/each}}
+{{/each}}</script>
+                    <!----pages---->
+                    <div class="pages">
+    <a href="#" class="pageBtn prev"></a>
+    <a href="#" class="on">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <span>···</span>
+    <a href="#">200</a>
+    <a href="#" class="pageBtn next"></a>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!----footer---->
+    
+    <div class="footer">
+        <div class="wrapper">
+            <div class="footer-hd clearfix">
+                <div class="footer-hd-l fl"><a href="#"><img src="__PUBLIC__/Front/images/footer-logo.png"></a></div>
+                <div class="footer-hd-r fl">
+                    <ul class="clearfix">
+                        <li>
+                            <p><span>About Keywa</span></p>
+                            <p><a href="#">About us</a></p>
+                            <p><a href="#">Contact us</a></p>
+                            <p><a href="#">Media Report</a></p>
+                            <p><a href="#">Terms of Use</a></p>
+                            <p><a href="#">Legal statement</a></p>
+                        </li>
+                        <li>
+                            <p><em>Support</em></p>
+                            <p><b><a href="mailto:service@keywa.com">Email: service@keywa.com</a></b></p>
+                            <p><b><a href="tel:+86 4008-488-999" target="_blank">Tel：+86 4008-488-999</a></b></p>
+                        </li>
+                        <li>
+                            <p><span>Language</span></p>
+                            <p><a href="#"><i class="cn"></i>中文</a></p>
+                            <p><a href="#"><i class="en"></i>English</a></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bd">
+                <div class="copyright">Keywa.com © Copyright 2016 Keywa Inc. All rights reserved. ICP No.:GuangDong14005764</div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/template-web.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/alert/alert.js"></script>
+<script type="text/javascript">window.$domain = 'http://kwen.t.weixinren.cn/'</script>
+<script type="text/javascript">
+$.fn.serializeObject = function() {
+  var o = {};
+  var a = this.serializeArray();
+  $.each(a, function() {
+      if (o[this.name] !== undefined) {
+          if (!o[this.name].push) {
+              o[this.name] = [o[this.name]];
+          }
+          o[this.name].push(this.value || '');
+      } else {
+          o[this.name] = this.value || '';
+      }
+  });
+  return o;
+};
+$.post($domain + 'user/account/userDetail', {}, function(d){
+	 var data = {}
+	 if(d.code != '000'){ return }
+	 data = d.detail
+	 $('#username').html('<a href="/home/my/user.html" style="padding-right:5px;">'+ data.username +'</a>! Welcome to Keywa !')
+	 $('#sign_wrap').html('<a href="/home/my/user.html">Account</a><a href="/user/index/logout.html">Sign Out</a>')
+}, 'json')
+</script>
+<script type="text/javascript" src="__PUBLIC__/Front/js/inquiry-order.js"></script>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inquiry detail</title>
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/inquiry-order-detaild.css">
+</head>
+<body>
+    <!----header---->
+    <script type="text/javascript" src="__PUBLIC__/Front/lib/template-web.js"></script>
+<script type="text/javascript">window.$domain = 'http://kwen.t.weixinren.cn/'</script>
+
+    <div class="top-bar">
+        <div class="wrapper">
+            <span id="username">Hello ! Welcome to Keywa !</span>
+            <a href="#" class="lang"><i></i>中文</a>
+        </div>
+    </div>
+
+
+    <!---user---->
+    <div class="user">
+        <div class="logo"><div class="wrapper"><a href="/"><img src="__PUBLIC__/Front/images/logo.png"></a><span>My Keywa</span></div></div>
+        <div class="position">
+            <div class="wrapper"><a href="#">HOME</a><em>></em><span>Dashboard</span><em>></em><span>Shipping order</span><em>></em><span>No.1 Base Oil</span></div>
+        </div>
+        <div class="user-main wrapper">
+            <!---inquiry-order-detaild----> 
+            <div class="inquiry-order-detaild-l">
+                <div class="inquiry-order-detaild-tabs">
+                    <ul class="clearfix">
+                        <li><a href="javascript:;" name="#tab1">Quotes</a></li>
+                        <li><a href="javascript:;" name="#tab2">inquiry</a></li>
+                        <li><a href="javascript:;" name="#tab3">Historical inquiry</a></li>
+                    </ul>
+                </div>
+                <script type="text/html" id="tp-tab1"><div class="quotes">
+    <div class="quotes-process">
+        <ul class="clearfix">
+            <li class="on">
+                <span></span>
+                <p>Drafting</p>
+            </li>
+            {{if state == 4}}
+            <li class="on">
+                <span></span>
+                <p>Closed</p>
+            </li>
+            {{else}}
+            <li {{if state >= 1}}class="on"{{/if}}>
+                <span></span>
+                <p>Seller confirms</p>
+            </li>
+            <li {{if state >= 2}}class="on"{{/if}}>
+                <span></span>
+                <p>Ship</p>
+            </li>
+            <li {{if state >= 3}}class="on"{{/if}}>
+                <span></span>
+                <p>Completed</p>
+            </li>
+            {{/if}}
+        </ul>
+    </div>
+    <div class="quotes-1">
+        <h2><span>Seller information</span><a href="#">Hide<i></i></a></h2>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+                <tr>
+                    <td width="80" align="right"><img src="__PUBLIC__/Front/images/user-avatar.jpg"></td>
+                    <td>
+                        <p><b>{{seller.Name}}</b></p>
+                        <p>Company Informatlon</p>
+                        <p>{{seller.COMPANY_NAME}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="80" align="right">Tel：</td>
+                    <td>{{seller.TEL}}</td>
+                </tr>
+                <tr>
+                    <td width="80" align="right">Email：</td>
+                    <td>{{seller.EMAIL}}</td>
+                </tr>
+                <tr>
+                    <td width="80" align="right">Fax：</td>
+                    <td>{{seller.FAX}}</td>
+                </tr>
+                <tr>
+                    <td width="80" align="right">Mobile：</td>
+                    <td>{{seller.MOBILE}}</td>
+                </tr>
+                <tr>
+                    <td width="100" align="right">Country：</td>
+                    <td>{{seller.COUNTRY}}</td>
+                </tr>
+                <tr>
+                    <td width="80" align="right">Region：</td>
+                    <td>{{seller.REGION}}</td>
+                </tr>
+                <tr>
+                    <td width="80" align="right">City：</td>
+                    <td>{{seller.CITY}}</td>
+                </tr>
+                <tr>
+                    <td width="80" align="right">Address：</td>
+                    <td>{{seller.ADDRESS}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    {{if quotes.quotesId > 0}}
+    <div class="quotes-1">
+        <h2><span>Offer Information</span></h2>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+                <tr>
+                    <td width="100" align="right">Quotation number</td>
+                    <td>{{quotes.quotesSn}}</td>
+                </tr>
+                <tr>
+                    <td width="100" align="right">Time quotes：</td>
+                    <td>{{quotes.addTime}}</td>
+                </tr>
+                <tr>
+                    <td width="100" align="right">Mode of transport：</td>
+                    <td>{{quotes.transport}}</td>
+                </tr>
+                <tr>
+                    <td width="100" align="right">Mode of payment：</td>
+                    <td>{{quotes.payway}}</td>
+                </tr>
+                <tr>
+                    <td width="100" align="right">Payment Terms：</td>
+                    <td>{{quotes.provision}}</td>
+                </tr>
+                <tr>
+                    <td width="100" align="right">Total price：</td>
+                    <td><span>$ {{quotes.skuPrice}}</span></td>
+                </tr>
+                <tr>
+                    <td width="100" align="right">Freight & other：</td>
+                    <td><span>$ {{quotes.freight}}</span></td>
+                </tr>
+                <tr>
+                    <td width="100" align="right">Order total price：</td>
+                    <td><span>$ {{quotes.totalPrice}}</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="quotes-2">
+        <h2>Product information</h2>
+        {{each quotes.productList pro ko}}
+        <dl class="clearfix">
+            <dt><a href="/product/detail/id/{{pro.productId}}" target="_blank"><img src="{{pro.image}}"></a></dt>
+            <dd>
+                <p><a href="/product/detail/id/{{pro.productId}}" target="_blank">{{pro.title}}</a></p>
+                <p><span><em>Unit price：</em>{{pro.inquiryPrice}}</span><span><em>Unit：</em>{{pro.weightUnit}}</span></p>
+                <p><span><em>Quantity：</em>{{pro.skuNumber}}</span><span><em>Total price：</em><font>${{pro.inquiryTotalPrice}}</font></span></p>
+            </dd>
+        </dl>
+        {{/each}}
+    </div>
+	    {{if state <= 1}}
+	    <div class="quotes-3">
+	        <h2>Order notes</h2>
+	        <p>
+	            <textarea rows="10" placeholder="Please enter a note"></textarea>
+	            <span>Remaining: <em>200</em></span>
+	        </p>
+	    </div>
+	    <div class="quotes-4">
+	        <p>Product total price：<font>${{quotes.totalPrice}}</font></p>
+	        <p><a href="write_order.html#inquiryId/{{quotes.inquiryId}}" class="keywa-btn keywa-btn-primary">Draft Order</a></p>
+	    </div>
+	    {{/if}}
+    {{else}}
+    <div class="quotes-empty">
+        <h2>Offer Information</h2>
+        <div class="quotes-empty-info">
+            <p><i></i></p>
+            <p>No Offer  yet</p>
+        </div>
+    </div>
+    {{/if}}
+</div></script>
+                <script type="text/html" id="tp-tab2"><div class="quotes">
+    <div class="quotes-2">
+        <h2>Product information</h2>
+        {{each productList pro pko}}
+        <dl class="clearfix">
+            <dt><a href="/product/detail/id/{{pro.productId}}" target="_blank" class="view_order_detaild"><img src="{{pro.image}}"></a></dt>
+            <dd>
+                <p><a href="/product/detail/id/{{pro.productId}}" target="_blank">{{pro.title}}</a></p>
+                <p><span><em>Unit price：</em>{{pro.inquiryPrice}}</span><span><em>Unit：</em>{{pro.weightUnit}}</span></p>
+                <p><span><em>Quantity：</em>{{pro.skuNumber}}</span><span><em>Total price：</em><font>${{pro.inquiryTotalPrice}}</font></span></p>
+            </dd>
+        </dl>
+        {{/each}}
+    </div>
+    <div class="quotes-1">
+        <h2><span>Offer Information</span></h2>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+                <td width="100" align="right">Quotation number</td>
+                <td>{{inquirySn}}</td>
+            </tr>
+            <tr>
+                <td width="100" align="right">Time quotes：</td>
+                <td>{{addTime}}</td>
+            </tr>
+            <tr>
+                <td width="100" align="right">Mode of transport：</td>
+                <td>{{transport}}</td>
+            </tr>
+            <tr>
+                <td width="100" align="right">Mode of payment：</td>
+                <td>{{payway}}</td>
+            </tr>
+            <tr>
+                <td width="100" align="right">Payment Terms：</td>
+                <td>{{provision}}</td>
+            </tr>
+            <tr>
+                <td width="100" align="right">Total price：</td>
+                <td><span>$ {{skuPrice}}</span></td>
+            </tr>
+            <tr>
+                <td  width="100"align="right">Freight & other：</td>
+                <td><span>$ {{freight}}</span></td>
+            </tr>
+            <tr>
+                <td width="100" align="right">Order total price：</td>
+                <td><span>$ {{totalPrice}}</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="inquiry-1">
+        <h2>Message</h2>
+        <p>{{message}}</p>
+    </div>
+    {{if attachment}}
+    <div class="inquiry-img">
+        <a href="{{attachment}}" target="_blank">
+            <dl class="clearfix">
+                <dt></dt>
+                <dd>
+                    <p><b>Download Attachment</b></p>
+                    <p>&nbsp;</p>
+                </dd>
+            </dl>
+        </a>
+    </div>
+	{{/if}}  
+</div></script>
+                <script type="text/html" id="tp-tab3"><div class="quotes">
+    <div class="quotes-2 history-quotes">
+        <h2>Product information</h2>
+        {{each list vo ko}}
+        	{{each vo.productList pro pko}}
+	        <dl class="clearfix">
+	            <dt><a href="/product/detail/id/{{pro.productId}}" target="_blank" class="view_order_detaild"><img src="{{pro.image}}"></a></dt>
+	            <dd>
+	                <a href="#{{vo.inquiryId}}" class="keywa-btn keywa-btn-primary view_order_detaild">View</a>
+	                <p><a href="/product/detail/id/{{pro.productId}}" target="_blank">{{pro.title}}</a></p>
+	                <p><span><em>Unit price：</em>{{pro.inquiryPrice}}</span><span><em>Unit：</em>{{pro.weightUnit}}</span></p>
+	                <p><span><em>Quantity：</em>{{pro.skuNumber}}</span><span><em>Total price：</em><font>${{pro.inquiryTotalPrice}}</font></span></p>
+	            </dd>
+	        </dl>
+	        {{/each}}
+        {{/each}}
+    </div>
+</div></script>
+                <div class="inquiry-order-detaild-contain">
+                    <div id="tab1" class="hidden"></div>
+                    <div id="tab2" class="hidden"></div>
+                    <div id="tab3" class="hidden"></div>
+                </div>
+            </div>
+            <div class="inquiry-order-detaild-r">
+                <div class="chat-box" id="scroll"></div>
+                <div class="chat-form" id="chat-form"></div>
+                <script type="text/html" id="tp-chat-question"><div class="chat-box-question">
+    <div class="chat-item">
+        <time><span>Me</span>{{addTime}}</time>
+        <div class="chat-box-info">
+            <p>{{content}}</p>
+        </div>
+    </div>
+</div></script>
+                <script type="text/html" id="tp-chat-list">{{each list dlist k1}}
+	{{each dlist.list vo ko}}
+		{{if vo.type == 1}}
+		<div class="chat-box-question">
+		    <div class="chat-item">
+		        <time><span>Me</span>{{vo.addTime}}</time>
+		        <div class="chat-box-info">
+		            <p>{{@vo.content}}</p>
+		        </div>
+		    </div>
+		</div>
+		{{/if}}
+		{{if vo.type == 2}}
+		<div class="chat-box-answer">
+		    <div class="chat-item">
+		        <time><span>{{vo.username}}</span>{{vo.addTime}}</time>
+		        <div class="chat-box-info">
+		            {{@vo.content}}
+		        </div>
+		    </div>
+		</div>
+		{{/if}}
+	{{/each}}
+{{/each}}</script>
+                <script type="text/html" id="tp-chat-form">{{if state <= 2}}
+<input type="text" placeholder="Please type your message here...">
+<button type="button" class="chat-send">Send</button>
+{{/if}}</script>
+            </div>
+        </div>
+    </div> 
+</body>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/template-web.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/alert/alert.js"></script>
+<script type="text/javascript">window.$domain = 'http://kwen.t.weixinren.cn/'</script>
+<script type="text/javascript">
+$.fn.serializeObject = function() {
+  var o = {};
+  var a = this.serializeArray();
+  $.each(a, function() {
+      if (o[this.name] !== undefined) {
+          if (!o[this.name].push) {
+              o[this.name] = [o[this.name]];
+          }
+          o[this.name].push(this.value || '');
+      } else {
+          o[this.name] = this.value || '';
+      }
+  });
+  return o;
+};
+$.post($domain + 'user/account/userDetail', {}, function(d){
+	 var data = {}
+	 if(d.code != '000'){ return }
+	 data = d.detail
+	 $('#username').html('<a href="/home/my/user.html" style="padding-right:5px;">'+ data.username +'</a>! Welcome to Keywa !')
+	 $('#sign_wrap').html('<a href="/home/my/user.html">Account</a><a href="/user/index/logout.html">Sign Out</a>')
+}, 'json')
+</script>
+<script type="text/javascript" src="__PUBLIC__/Front/js/inquiry-order-detaild.js"></script>
+</html>

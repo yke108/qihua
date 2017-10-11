@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Inquiry</title>
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/write-inquiry.css">
+</head>
+<body>
+    <!----header---->
+    <script type="text/javascript" src="__PUBLIC__/Front/lib/template-web.js"></script>
+<script type="text/javascript">window.$domain = 'http://kwen.t.weixinren.cn/'</script>
+
+    <div class="top-bar">
+        <div class="wrapper">
+            <span id="username">Hello ! Welcome to Keywa !</span>
+            <a href="#" class="lang"><i></i>中文</a>
+        </div>
+    </div>
+
+
+    <form id="inquiry-form">
+    <!---user---->
+    <div class="user">
+        <div class="logo">
+            <div class="wrapper">
+                <a href="/"><img src="__PUBLIC__/Front/images/logo.png"></a><span>New Inquiry</span>
+            </div>
+        </div>
+        <!---write-inquiry----> 
+        <div class="write-order wrapper">
+            <div class="write-inquiry-1">
+                <h1><i></i>Supplier  Keywa Official Store</h1>
+            </div>
+            <div class="write-order-2">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th width="400" align="left"><b>Product Information</b></th>
+                            <th width="185" align="center">Reference Price</th>
+                            <th width="185" align="center">Quantity</th>
+                            <th width="130" align="center">Unit</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="inquiry-product-info"></tbody>
+                </table>
+                <script type="text/html" id="tp-inquiry-product-info">
+					<tr>
+    <td width="340" align="left">
+        <dl>
+            <dt><img src="{{info.image}}"></dt>
+            <dd>
+                <p><a href="{{info.url}}" target="_blank">{{info.title}}</a></p>
+                <p></p>
+            </dd>
+        </dl>
+    </td>
+    <td align="center"><span class="price">$ </span><input type="text" name="price" class="price" value="{{info.price}}"></td>
+    <td align="center">
+        <p><input type="text" value="{{info.productNumber}}" name="productNumber" moq="{{info.moq}}"></p>
+        <p>{{if info.moq > 1}}MOQ {{info.moq}} {{info.weightUnitTip}}{{/if}}</p>
+        <input type="hidden" name="skuId" value="{{info.skuId}}"/>
+    </td>
+    <td align="center">{{info.weightUnitTip}}</td>
+    <td align="center"><a href="javascript:;" class="keywa-btn">Delete</a></td>
+</tr>
+				</script>
+                <div class="write-order-2-btn">
+                    <a href="javascript:;" class="add-new-product">+ Add New Product</a>
+                    <a href="javascript:;" class="add-favorite-product">+ Add my favorite product</a>
+                </div>
+            </div>
+            <div class="write-order-3">
+                <h2><span>Special instructions</span><a href="javascript:;">Show<i></i></a></h2>
+                <div class="textarea">
+                    <textarea name="message" placeholder="Please enter a comment message" rows="10"></textarea>
+                    <span>Remaining: <em>800</em></span>
+                </div>
+                <div class="write-order-3-btn clearfix">
+                    <div id="fileUploadContent" class="fileUploadContent mui-clearfix"></div>
+                </div>
+            </div>
+            <div class="write-order-4" id="offer-info"></div>
+            <script type="text/html" id="tp-offer-info">
+				<h2>Offer Information</h2>
+                <h3>Describe About your perferred unit price,destination port and the payment methods，<b>Pob+T/T</b></h3>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <td align="left">Mode of transport</td>
+                            <td align="left">
+                                <select class="chosen-select" name="transport">
+                            		{{each transport vo ko}}
+                                    <option value="{{vo.id}}">{{vo.name}}</option>
+                                    {{/each}}
+                                </select>
+                                <input type="text" name="transportDetail">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left">Mode of payment</td>
+                            <td align="left">
+                                <select class="chosen-select" name="payway">
+                                    {{each payway vo ko}}
+                                    <option value="{{vo.id}}">{{vo.name}}</option>
+                                    {{/each}}
+                                </select>
+                                <input type="text" name="paywayDetail">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left">Payment Terms</td>
+                            <td align="left">
+                                <select class="chosen-select" name="provision">
+                                    {{each provision vo ko}}
+                                    <option value="{{vo.id}}">{{vo.name}}</option>
+                                    {{/each}}
+                                </select>
+                                <input type="text" name="provisionDetail">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left">Total price</td>
+                            <td align="left">
+                                <span class="price">$ 2500</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left">Freight & other </td>
+                            <td align="left">
+                            	<span class="price">$ </span><input type="text" name="freight" class="price" value="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left">Order total price</td>
+                            <td align="left">
+                                <span class="price">$ 25200</span>
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
+			</script>
+        </div>
+        <div class="write-order-btn"> 
+            <div class="wrapper">
+                <label><input type="checkbox" name="agree"><em></em>I have read , understood and agreed to abide by <b>Terms and Conditions Gverning Keywa</b></label>
+                <span><a href="javascript:;" class="keywa-btn keywa-btn-primary" id="inquiry-form-submit">Submit</a></span>
+            </div>
+        </div>
+    </div> 
+
+    <!---收藏商品弹窗--->
+    <div class="collection-pop" id="collection-pop"></div>
+    <script type="text/html" id="tp-collection-pop"><div class="collection-pop-hd">
+    <span>Add My Favorite Product</span>
+    <form action="">
+        <input type="text" name="" placeholder="Please entry products">
+        <button type="submit"><i></i>Seacher</button>
+        <i class="close"></i>
+    </form>
+</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <thead>
+        <tr>
+            <th width="50%" align="left">Product information</th>
+            <th width="50%" align="left">Collection time</th>
+        </tr>
+    </thead>
+</table>
+<div class="collection-pop-bd">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="pop-table">
+        <tbody>
+            <tr>
+                <td width="50%" align="left">
+                    <label><input type="checkbox"><em></em></label>
+                    <dl>
+                        <dt><img src="__PUBLIC__/Front/images/pic9.jpg"></dt>
+                        <dd>
+                            <p><a href="#">【Ante】 Absolute Ethanol</a></p>
+                            <p>≥99.5% Food Grade, GR</p>
+                        </dd>
+                    </dl>
+                </td>
+                <td width="50%" align="left">2017-08-11 15:07</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="blank"></td>
+            </tr>
+            <tr>
+                <td width="50%" align="left">
+                    <label><input type="checkbox"><em></em></label>
+                    <dl>
+                        <dt><img src="__PUBLIC__/Front/images/pic9.jpg"></dt>
+                        <dd>
+                            <p><a href="#">【Ante】 Absolute Ethanol</a></p>
+                            <p>≥99.5% Food Grade, GR</p>
+                        </dd>
+                    </dl>
+                </td>
+                <td width="50%" align="left">2017-08-11 15:07</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="blank"></td>
+            </tr>
+            <tr>
+                <td width="50%" align="left">
+                    <label><input type="checkbox"><em></em></label>
+                    <dl>
+                        <dt><img src="__PUBLIC__/Front/images/pic9.jpg"></dt>
+                        <dd>
+                            <p><a href="#">【Ante】 Absolute Ethanol</a></p>
+                            <p>≥99.5% Food Grade, GR</p>
+                        </dd>
+                    </dl>
+                </td>
+                <td width="50%" align="left">2017-08-11 15:07</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="blank"></td>
+            </tr>
+            <tr>
+                <td width="50%" align="left">
+                    <label><input type="checkbox"><em></em></label>
+                    <dl>
+                        <dt><img src="__PUBLIC__/Front/images/pic9.jpg"></dt>
+                        <dd>
+                            <p><a href="#">【Ante】 Absolute Ethanol</a></p>
+                            <p>≥99.5% Food Grade, GR</p>
+                        </dd>
+                    </dl>
+                </td>
+                <td width="50%" align="left">2017-08-11 15:07</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="collection-pop-page">
+    <a href="javascript:;" class="keywa-btn prev"></a>
+    <span><em>1</em>/400</span>
+    <a href="javascript:;" class="keywa-btn next"></a>
+    <a href="#" class="keywa-btn keywa-btn-primary">Confirm</a>
+    <a href="javascript:;" class="keywa-btn cancel">Cancel</a>
+</div></script>
+    <!---新商品弹窗--->
+    <div class="new-product-pop" id="new-product-pop"></div>
+    <script type="text/html" id="tp-new-product-pop"><div class="collection-pop-hd">
+    <span>Add My Favorite Product</span>
+    <form action="">
+        <input type="text" name="" placeholder="Please entry products">
+        <button type="submit"><i></i>Seacher</button>
+        <i class="close"></i>
+    </form>
+</div>
+
+<div class="clearfix">
+    <div class="goods-list-categories fl">
+        <div class="goods-list-categories-item">
+            <ul>
+                <li>
+                    <h3><a href="javascript:;"><i></i>All</a></h3>
+                    <ol>
+                        <li>
+                            <h4><a href="javascript:;"><i></i>Daily Chemicals</a></h4>
+                            <div class="categories-sub">
+                                <p><a href="#" class="on">Surfactants</a></p>
+                                <p><a href="#">Emulsifiers</a></p>
+                                <p><a href="#">Auxiliaries</a></p>
+                                <p><a href="#">PH Regulators</a></p>
+                                <p><a href="#">Papermaking</a></p>
+                            </div>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <h3><a href="javascript:;"><i></i>All</a></h3>
+                    <ol>
+                        <li>
+                            <h4><a href="javascript:;"><i></i>Daily Chemicals</a></h4>
+                            <div class="categories-sub">
+                                <p><a href="#" class="on">Surfactants</a></p>
+                                <p><a href="#">Emulsifiers</a></p>
+                                <p><a href="#">Auxiliaries</a></p>
+                                <p><a href="#">PH Regulators</a></p>
+                                <p><a href="#">Papermaking</a></p>
+                            </div>
+                        </li>
+                    </ol>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="goods-list-box fr">
+        <div class="goods-list-box-hd">
+            <p><a href="#">Non-ionic Surfactants</a><a href="#">Cationic Surfactants</a><a href="#">Anionic Surfactants</a><a href="#">Zwitterionic Surfactants</a><a href="#">Others</a></p>
+            <form action=""><input type="text" placeholder="Min."><span>To</span><input type="text" placeholder="Max."><button type="submit">Set</button></form>
+        </div>
+        <div class="goods-list-box-bd">
+            <ul class="clearfix">
+                <li class="on">
+                    <label><input type="checkbox" checked><em></em></label>
+                    <span><i></i><img src="__PUBLIC__/Front/images/pic9.jpg"></span>
+                    <p><font>$3.92/Kg</font></p>
+                    <p>【BASF】 Monoethanolamine Industrial Grade</p>
+                </li>
+                <li>
+                    <label><input type="checkbox"><em></em></label>
+                    <span><i></i><img src="__PUBLIC__/Front/images/pic9.jpg"></span>
+                    <p><font>$3.92/Kg</font></p>
+                    <p>【BASF】 Monoethanolamine Industrial Grade</p>
+                </li>
+                <li>
+                    <label><input type="checkbox"><em></em></label>
+                    <span><i></i><img src="__PUBLIC__/Front/images/pic9.jpg"></span>
+                    <p><font>$3.92/Kg</font></p>
+                    <p>【BASF】 Monoethanolamine Industrial Grade</p>
+                </li>
+                <li>
+                    <label><input type="checkbox"><em></em></label>
+                    <span><i></i><img src="__PUBLIC__/Front/images/pic9.jpg"></span>
+                    <p><font>$3.92/Kg</font></p>
+                    <p>【BASF】 Monoethanolamine Industrial Grade</p>
+                </li>
+                <li>
+                    <label><input type="checkbox"><em></em></label>
+                    <span><i></i><img src="__PUBLIC__/Front/images/pic9.jpg"></span>
+                    <p><font>$3.92/Kg</font></p>
+                    <p>【BASF】 Monoethanolamine Industrial Grade</p>
+                </li>
+                <li>
+                    <label><input type="checkbox"><em></em></label>
+                    <span><i></i><img src="__PUBLIC__/Front/images/pic9.jpg"></span>
+                    <p><font>$3.92/Kg</font></p>
+                    <p>【BASF】 Monoethanolamine Industrial Grade</p>
+                </li>
+                <li>
+                    <label><input type="checkbox"><em></em></label>
+                    <span><i></i><img src="__PUBLIC__/Front/images/pic9.jpg"></span>
+                    <p><font>$3.92/Kg</font></p>
+                    <p>【BASF】 Monoethanolamine Industrial Grade</p>
+                </li>
+                <li>
+                    <label><input type="checkbox"><em></em></label>
+                    <span><i></i><img src="__PUBLIC__/Front/images/pic9.jpg"></span>
+                    <p><font>$3.92/Kg</font></p>
+                    <p>【BASF】 Monoethanolamine Industrial Grade</p>
+                </li>
+                <li>
+                    <label><input type="checkbox"><em></em></label>
+                    <span><i></i><img src="__PUBLIC__/Front/images/pic9.jpg"></span>
+                    <p><font>$3.92/Kg</font></p>
+                    <p>【BASF】 Monoethanolamine Industrial Grade</p>
+                </li>
+                <li>
+                    <label><input type="checkbox"><em></em></label>
+                    <span><i></i><img src="__PUBLIC__/Front/images/pic9.jpg"></span>
+                    <p><font>$3.92/Kg</font></p>
+                    <p>【BASF】 Monoethanolamine Industrial Grade</p>
+                </li>
+                <li>
+                    <label><input type="checkbox"><em></em></label>
+                    <span><i></i><img src="__PUBLIC__/Front/images/pic9.jpg"></span>
+                    <p><font>$3.92/Kg</font></p>
+                    <p>【BASF】 Monoethanolamine Industrial Grade</p>
+                </li>
+                <li>
+                    <label><input type="checkbox"><em></em></label>
+                    <span><i></i><img src="__PUBLIC__/Front/images/pic9.jpg"></span>
+                    <p><font>$3.92/Kg</font></p>
+                    <p>【BASF】 Monoethanolamine Industrial Grade</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="collection-pop-page">
+    <a href="javascript:;" class="keywa-btn prev"></a>
+    <span><em>1</em>/400</span>
+    <a href="javascript:;" class="keywa-btn next"></a>
+    <a href="#" class="keywa-btn keywa-btn-primary">Confirm</a>
+    <a href="javascript:;" class="keywa-btn cancel">Cancel</a>
+</div></script>
+	</form>
+    <div class="mask"></div>
+    <!----footer---->
+    
+    <div class="footer">
+        <div class="wrapper">
+            <div class="footer-hd clearfix">
+                <div class="footer-hd-l fl"><a href="#"><img src="__PUBLIC__/Front/images/footer-logo.png"></a></div>
+                <div class="footer-hd-r fl">
+                    <ul class="clearfix">
+                        <li>
+                            <p><span>About Keywa</span></p>
+                            <p><a href="#">About us</a></p>
+                            <p><a href="#">Contact us</a></p>
+                            <p><a href="#">Media Report</a></p>
+                            <p><a href="#">Terms of Use</a></p>
+                            <p><a href="#">Legal statement</a></p>
+                        </li>
+                        <li>
+                            <p><em>Support</em></p>
+                            <p><b><a href="mailto:service@keywa.com">Email: service@keywa.com</a></b></p>
+                            <p><b><a href="tel:+86 4008-488-999" target="_blank">Tel：+86 4008-488-999</a></b></p>
+                        </li>
+                        <li>
+                            <p><span>Language</span></p>
+                            <p><a href="#"><i class="cn"></i>中文</a></p>
+                            <p><a href="#"><i class="en"></i>English</a></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bd">
+                <div class="copyright">Keywa.com © Copyright 2016 Keywa Inc. All rights reserved. ICP No.:GuangDong14005764</div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/template-web.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/alert/alert.js"></script>
+<script type="text/javascript">window.$domain = 'http://kwen.t.weixinren.cn/'</script>
+<script type="text/javascript">
+$.fn.serializeObject = function() {
+  var o = {};
+  var a = this.serializeArray();
+  $.each(a, function() {
+      if (o[this.name] !== undefined) {
+          if (!o[this.name].push) {
+              o[this.name] = [o[this.name]];
+          }
+          o[this.name].push(this.value || '');
+      } else {
+          o[this.name] = this.value || '';
+      }
+  });
+  return o;
+};
+$.post($domain + 'user/account/userDetail', {}, function(d){
+	 var data = {}
+	 if(d.code != '000'){ return }
+	 data = d.detail
+	 $('#username').html('<a href="/home/my/user.html" style="padding-right:5px;">'+ data.username +'</a>! Welcome to Keywa !')
+	 $('#sign_wrap').html('<a href="/home/my/user.html">Account</a><a href="/user/index/logout.html">Sign Out</a>')
+}, 'json')
+</script>
+<script type="text/javascript" src="__PUBLIC__/Front/js/write-inquiry.js"></script>
+</html>

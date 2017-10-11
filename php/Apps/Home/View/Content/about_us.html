@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us</title>
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/about-us.css">
+</head>
+<body>
+    <!----header---->
+    <script type="text/javascript" src="__PUBLIC__/Front/lib/template-web.js"></script>
+<script type="text/javascript">window.$domain = 'http://kwen.t.weixinren.cn/'</script>
+
+    <div class="top-bar">
+        <div class="wrapper">
+            <span id="username">Hello ! Welcome to Keywa !</span>
+            <a href="#" class="lang"><i></i>中文</a>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="__PUBLIC__/Front/lib/template-web.js"></script>
+<script type="text/javascript">window.$domain = 'http://kwen.t.weixinren.cn/'</script>
+
+
+    <div class="header">
+        <div class="wrapper clearfix">
+            <div class="header-logo fl">
+                <a href="/"><img src="__PUBLIC__/Front/images/logo.png"></a>
+            </div>
+            <div class="header-search fl">
+                <form action="#" class="clearfix">
+                    <div class="header-search-sort fl">
+                        <span><em>Mall</em><i></i></span>
+                        <div class="header-search-sort-list">
+                            <p><a href="javascript:;">Mall1</a></p>
+                            <p><a href="javascript:;">Mall2</a></p>
+                            <p><a href="javascript:;">Mall3</a></p>
+                            <p><a href="javascript:;">Mall4</a></p>
+                            <p><a href="javascript:;">Mall5</a></p>
+                        </div>
+                    </div>
+                    <input type="text" placeholder="I'm shopping for...">
+                    <button type="submit">??</button>
+                </form>
+                <div class="header-search-hot">
+                    <a href="#">Albania</a>
+                    <a href="#">Brazil</a>
+                    <a href="#">Gabon</a>
+                    <a href="#">India</a>
+                    <a href="#">Singapore</a>
+                    <a href="#">Suriname</a>
+                    <a href="#">Libya</a>
+                </div>
+            </div>
+            <div class="header-uesr fl">
+                <i></i>
+                <p id="sign_wrap"><a href="/User/index/login.html">Sigh In</a><a href="/User/index/register.html">Join Free</a></p>
+                <p>My Keywa</p>
+            </div>
+            <div class="header-Favorites fr">
+                <a href="/Home/my/product_collection.html"><i></i>Favorites<br>List</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!----nav---->
+    <div class="nav" id="nav-box"></div>
+    <script type="text/html" id="tp-nav-box">
+		<div class="wrapper clearfix">
+    <div class="nav-sort fl">
+        <h1><i></i>All Categories</h1>
+        <div class="nav-sort-list">
+            <ul>
+            	{{each data vo ko}}
+                <li><a href="{{vo.url}}"><i class="icon{{ko + 1}}"></i>{{vo.text}}</a></li>
+                {{/each}}
+            </ul>
+            <ol>
+            	{{each data vo ko}}
+                <li>
+                    <div class="nav-sort-item clearfix">
+                        <div class="nav-sort-item-l fl">
+                        	{{each vo.children fvo fko}}
+                            <div class="nav-sort-item-l-sub">
+                                <h3><a href="{{fvo.url}}">{{fvo.text}}</a></h3>
+                                <p>
+                                	{{each fvo.children svo sko}}
+                                    <a href="{{svo.url}}">{{svo.text}}</a>
+                                    {{/each}}
+                                </p>
+                            </div>
+                            {{/each}}
+                        </div>
+                        <div class="nav-sort-item-r fl">
+                           	{{each vo.products product}}
+                            <div class="nav-sort-item-r-sub">
+                                <a href="{{product.url}}">
+                                    <div class="item-r-info">
+                                        <p>{{product.title}}</p>
+                                        <span>{{product.currency}}{{product.price}}/{{product.weightUnit}}</span>
+                                    </div>
+                                    <img src="{{product.thumb}}" style="max-width:120px;max-height:120px;">
+                                </a>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </li>
+                {{/each}}
+            </ol>
+        </div>
+    </div>
+    <div class="nav-menu fl">
+        <ul class="clearfix">
+            <li><a href="/" >Home</a></li>
+            <li><a href="/product/index" >Mall</a></li>
+            <li><a href="/Buyoffer/indexlist" >Buy Offers</a></li>
+            <li><a href="/Supply/lists" >Supply offers</a></li>
+            <li><a href="/Content/about_us" class="on">About us</a></li>
+            <li><a href="/Content/terms" >Terms of Use</a></li>
+        </ul>
+    </div>
+</div>
+	</script>
+
+    <!----about-us---->
+    <div class="about-us-banner"><img src="__PUBLIC__/Front/images/terms-banner.jpg" width="100%"></div>
+    <div class="about-us">
+        <div class="about-us-hd">
+	<ul class="clearfix">
+		<li><a href="about_us.html" class="on"><i class="i1"></i><p>About us</p></a></li>
+		<li><a href="contact_us.html" ><i class="i2"></i><p>Contact us</p></a></li>
+		<li><a href="news.html" ><i class="i3"></i><p>Media Report</p></a></li>
+	</ul>
+</div>
+        <div class="about-content-1">
+            <dl class="wrapper clearfix">
+                <dt>
+                    <h1>KeyWa Introduction</h1>
+                    <h2>Company Profile</h2>
+                    <p>Keywa devotes to become the global leader in chemical industry resource integration. Keywa creates B2P, a commercial Bussiness Model (business to platform) aiming to integrate chemical industry resources globally. Experienced in Internet and chemical industry, Keywa is committed to build a professional industry Internet model, setting up the seamless connection platform, linking to global chemical industry resources in order to lead the global chemical industry resource sharing. The rapid progress of Keywa with unique strategy perspective will lead chemical industry to a new prospect.</p><br>
+                    <p>In response to the national strategy of “Supply-side Structural Reform” and strategy of “Internet+”, relying on the advanced chemical spot electronic trading platform, Keywa is committed to provide accurate, safe, efficient one-stop total solutions for operation and development global chemical enterprises; Keywa intends to save cost and raise efficiency for clients by optimizing structure and building a unique industry value chain. Keywa has aspired to become the most powerful chemical industry Internet enterprise worldwide, with strong equilibrium abilities and abundant resources for industry development.</p>
+                </dt>
+                <dd><img src="__PUBLIC__/Front/images/about-pic1.jpg"></dd>
+            </dl>
+        </div>
+        <div class="about-content-2">
+            <div class="wrapper">
+                <h2>Basic Information</h2>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="175">Chinese Name</td>
+                        <td>奇化网</td>
+                        <td width="175">English Name</td>
+                        <td>Keywa</td>
+                    </tr>
+                    <tr>
+                        <td width="175">Head Office</td>
+                        <td>Guangdong, China</td>
+                        <td width="175">Foundation</td>
+                        <td>18th December, 2013</td>
+                    </tr>
+                    <tr>
+                        <td width="175">Business Scope</td>
+                        <td colspan="3">Make investment in chemical trading market, chemical E-commerce, chemical products R&D, chemical product transaction, financial service in the chemical trading industrial chain and stock rights etc.</td>
+                    </tr>
+                    <tr>
+                        <td width="175">Bussiness Model</td>
+                        <td>Pioneer the B2P(Business to Platform) Bussiness Model</td>
+                        <td width="175">Website Nature</td>
+                        <td>Chemical Trading</td>
+                    </tr>
+                    <tr>
+                        <td width="175">Official Website</td>
+                        <td colspan="3">www.keywa.com</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="transparent-shadow"><img src="__PUBLIC__/Front/images/transparent-shadow.png"></div>
+        </div>
+        <div class="about-content-3">
+            <div class="wrapper">
+                <h1>Corporate Culture</h1>
+                <h2>Learn about keywa</h2>
+                <div class="about-content-3-ifno">
+                    <p>Slogan: Sharing miraculous chemistry via one web</p><br>
+                    <p>Vision: To be the global leader in chemical industry resource integration</p><br>
+                    <p>Mission: Help global chemical enterprises by integrating chemical industry resource, lead industrial innovation, maintain sustainable development, build a sharable and win-win chemical industry ecology</p>
+                </div>
+                <dl class="clearfix">
+                    <dt>
+                        <p>Core Values:</p>
+                        <p><span>K</span>eep Being Creative</p>
+                        <p><span>E</span>fficiency Priority</p>
+                        <p><span>Y</span>oung at Heart</p>
+                        <p><span>W</span>in Together</p>
+                        <p><span>A</span>ggregation of Talents</p>
+                    </dt>
+                    <dd><img src="__PUBLIC__/Front/images/about-pic3.jpg"></dd>
+                </dl>
+            </div>
+        </div>
+        <div class="about-content-4">
+            <div class="wrapper">
+                <h1>Company Honor</h1>
+                <h2>Keywa glory</h2>
+                <div class="about-content-4-info">
+                    <p>The key commercial project in Chancheng District, Foshan</p>
+                    <p>The key construction project of Guangdong province</p>
+                    <p>Got authentication from credit website</p>
+                    <p>The vice president of E-Commerce Association of Foshan City</p>
+                    <p>A member of China E-Commerce Association</p>
+                    <p>A member of China Cleaning Industry Association</p>
+                </div>
+            </div>
+            <div class="transparent-shadow"><img src="__PUBLIC__/Front/images/transparent-shadow.png"></div>
+        </div>
+        <div class="about-content-5">
+            <div class="wrapper">
+                <h1>Characteristics</h1>
+                <h2>Website (Company)</h2>
+                <dl class="clearfix">
+                    <dt><img src="__PUBLIC__/Front/images/about-pic5.jpg"></dt>
+                    <dd>
+                        <p>Keywa integrates the E-commerce’s cloud technology with the traditional chemical trade in a high-efficient manner. By means of self-support and joint operation, it integrates the supply chain value and initiates the new mode of Internet for the chemical industry; meanwhile, by integrating the resources of industrial chain, it is striving to realize the goal of “Sharing miraculous chemistry via one web”.</p>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="about-content-6">
+            <div class="wrapper">
+                <h1>Bussiness Model</h1>
+                <h2>Philosophy</h2>
+                <div class="about-content-6-info">
+                    <p>Keywa pioneer the <span>B</span> to <span>P</span> (Business to Platform) Bussiness Model</p>
+                </div>
+            </div>
+        </div>
+        <div class="about-content-7">
+            <div class="wrapper">
+                <h1>Product and Service Introduction</h1>
+                <h2>Keywa service</h2>
+                <div class="about-content-7-info">
+                    <p>Based upon the chemical industry, and with rich experience in the chemical industry operation, Keywa operate the chemical raw materials and products by means of self-support and joint operation. It has also expanded its business to relevant peripheral industries, including  daily use chemicals, agrochemicals, petrochemicals and energy industries. Meanwhile, Keywa also invests in the chemical trading market and engaged in chemical E-commerce, chemical products R&D, chemical products transaction, financial service in the chemical trading industrial chain and stock rights businesses etc.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!----floor-nav---->
+    <div class="floor-nav">
+        <ul>
+            <li><a href="javascript:;"><i class="icon9"></i><span>user center</span></a></li>
+            <li><a href="javascript:;"><i class="icon10"></i><span>online service</span></a></li>
+            <li><a href="javascript:;"><i class="icon11"></i><span>user ollection</span></a></li>
+        </ul>
+        <a href="javascript:;" class="go-top">
+            <span>TOP</span>
+            <i></i>
+        </a>
+    </div>
+
+    <!----footer---->
+    
+    <div class="footer">
+        <div class="wrapper">
+            <div class="footer-hd clearfix">
+                <div class="footer-hd-l fl"><a href="#"><img src="__PUBLIC__/Front/images/footer-logo.png"></a></div>
+                <div class="footer-hd-r fl">
+                    <ul class="clearfix">
+                        <li>
+                            <p><span>About Keywa</span></p>
+                            <p><a href="#">About us</a></p>
+                            <p><a href="#">Contact us</a></p>
+                            <p><a href="#">Media Report</a></p>
+                            <p><a href="#">Terms of Use</a></p>
+                            <p><a href="#">Legal statement</a></p>
+                        </li>
+                        <li>
+                            <p><em>Support</em></p>
+                            <p><b><a href="mailto:service@keywa.com">Email: service@keywa.com</a></b></p>
+                            <p><b><a href="tel:+86 4008-488-999" target="_blank">Tel：+86 4008-488-999</a></b></p>
+                        </li>
+                        <li>
+                            <p><span>Language</span></p>
+                            <p><a href="#"><i class="cn"></i>中文</a></p>
+                            <p><a href="#"><i class="en"></i>English</a></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bd">
+                <div class="copyright">Keywa.com © Copyright 2016 Keywa Inc. All rights reserved. ICP No.:GuangDong14005764</div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/template-web.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/alert/alert.js"></script>
+<script type="text/javascript">window.$domain = 'http://kwen.t.weixinren.cn/'</script>
+<script type="text/javascript">
+$.fn.serializeObject = function() {
+  var o = {};
+  var a = this.serializeArray();
+  $.each(a, function() {
+      if (o[this.name] !== undefined) {
+          if (!o[this.name].push) {
+              o[this.name] = [o[this.name]];
+          }
+          o[this.name].push(this.value || '');
+      } else {
+          o[this.name] = this.value || '';
+      }
+  });
+  return o;
+};
+$.post($domain + 'user/account/userDetail', {}, function(d){
+	 var data = {}
+	 if(d.code != '000'){ return }
+	 data = d.detail
+	 $('#username').html('<a href="/home/my/user.html" style="padding-right:5px;">'+ data.username +'</a>! Welcome to Keywa !')
+	 $('#sign_wrap').html('<a href="/home/my/user.html">Account</a><a href="/user/index/logout.html">Sign Out</a>')
+}, 'json')
+</script>
+<script type="text/javascript" src="__PUBLIC__/Front/js/about-us.js"></script>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>打印订单</title>
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/print-order.css">
+</head>
+<body>
+    <!---user---->
+    <!--startprint1-->
+    <div class="user" id="order-print"></div>
+    <!--endprint1-->
+    <script type="text/html" id="tp-order-print"><div class="logo">
+            <div class="wrapper">
+                <img src="__PUBLIC__/Front/images/logo.png">
+                <span>ORDER & SPECIFICATION CONFIRMATION<p>REVISION NO. :{{orderInfo.orderSn}}</p></span>
+            </div>
+        </div>
+        <!---print-order---->
+        <div class="print-order wrapper">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td width="140" align="center" rowspan="3"><b>VENDOR NO:</b></td>
+                    <td width="400" rowspan="3">
+                        Guangdong Keywa Chemical Tranding Center Co.,Ltd.
+                        C1, Foshan National Torch Innovation Pioneering Park,No.13 Huabao South Road, Chancheng District,Foshan,Guangdong ,China.
+                        Attn:           Tel:            Fax:          Email:
+                    </td>
+                    <td width="140" align="right"><b>ORDER NO:</b></td>
+                    <td>{{orderInfo.orderSn}}</td>
+                </tr>
+                <tr>
+                    <td width="140" align="right"><b>DATE:</b></td>
+                    <td>{{orderInfo.addTime}}</td>
+                </tr>
+                <tr>
+                    <td width="140" align="right"><b>PAGE:</b></td>
+                    <td>2</td>
+                </tr>
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td width="140" align="center" rowspan="2"><b>INVOICE TO:</b></td>
+                    <td colspan="2">
+                        <p>Bharat Jyoti Impex Jasu , 30-Dadabhai Road,Opp CNM School /Near Flyover Vile Parle West,Mumbai 400056 Marashtra,India.</p>
+                        <p>Attn:                  Tel:            Fax:          Email:</p>
+                    </td>
+                    <td width="140" align="center"><b>CONSIGNEE /<br>DELIVERY ADDRESS:</b></td>
+                    <td colspan="3">
+                        <p>Bharat Jyoti Impex Jasu , 30-Dadabhai Road,Opp CNM School /Near Flyover Vile Parle West,Mumbai 400056 Marashtra,India.</p>
+                        <p>Attn:                  Tel:            Fax:          Email:</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6">GST NO.</td>
+                </tr>
+                <tr>
+                    <td align="center"><b>MODE OF TRANSPORT:</b></td>
+                    <td width="90">{{orderInfo.transport}}</td>
+                    <td width="280" align="right"><b>PORT OF LOADING/DEPARTURE:</b></td>
+                    <td>Guangzhou,China</td>
+                    <td align="right"><b>UNIT:</b></td>
+                    <td colspan="2">MT</td>
+                </tr>
+                <tr>
+                    <td align="center"><b>FREIGHT :</b></td>
+                    <td>PAYABLE</td>
+                    <td width="280" align="right"><b>PORT OF DISCHARGE/DESTIONATION:</b></td>
+                    <td>NHAVA SHEVA INDIA</td>
+                    <td align="right"><b>CURRENCY:</b></td>
+                    <td colspan="2">USD</td>
+                </tr>
+                <tr>
+                    <td align="center"><b>DELIVERY TERM: </b></td>
+                    <td>CIF</td>
+                    <td width="280" align="right"><b>DESTINATION OF GOODS:</b></td>
+                    <td>N/A</td>
+                    <td align="right"><b>PAYMENT TERM:</b></td>
+                    <td colspan="2">T/T IN ADVANCED/LC AT SIGHT</td>
+                </tr>
+                <tr>
+                    <td align="center"><b>INSURANCE BY:</b></td>
+                    <td>SELLER</td>
+                    <td width="280" align="right"><b>COUNTRY OF FINAL  DESTINATION:</b></td>
+                    <td>N/A</td>
+                    <td align="right"><b>GOVERNED BY:</b></td>
+                    <td colspan="2"><b>{{orderInfo.governed}}</b></td>
+                </tr>
+                <tr>
+                    <td align="center"><b>ITEMS:</b></td>
+                    <td colspan="2">PRODUCT DESCRIPTION(SPECIFICATIONS)</td>
+                    <td>PACKING SIZE</td>
+                    <td><b>QUANTITY(MT)</b></td>
+                    <td><b>UNIT PRICE(USD/MT)</b></td>
+                    <td><b>AMOUNT(USD)</b></td>
+                </tr>
+                <tr>
+                    <td width="50" class="brn" align="center"><b>1</b></td>
+                    <td colspan="2">
+                        <br>
+                        <p><b>N Heptane 99PCNT</b></p>
+                        <p><span>Test item</span><span>Specifications</span><span>Test Method</span></p>
+                        <p><span>Color Sybolt:</span><span>=+28</span><span>GB/T3555</span></p>
+                        <p><span>Initial boiling point(centigrade):</span><span>=96</span><span>GB/T6536-2010</span></p>
+                        <p><span>Dry point(centigrade):</span><span>=99</span><span>GB/T6536-2010</span></p>
+                        <p><span>N-heptane purity(%):</span><span>=99</span><span>GB/T9722-2006</span></p>
+                        <p><span>Specific gravity(kg/m3):</span><span>675-690</span><span>GB/T1884</span></p>
+                        <p><span>Bromine index(mg/100g):</span><span>=50</span><span>GB/T11136</span></p>
+                        <p><span>Aromatics content(ppm)</span><span>=50</span><span>SH/T/0913</span></p>
+                        <p><span>Total sulfur(ppm):</span><span>=1</span><span>GB/T6324.4-2008</span></p>
+                        <p><span>Total sulfur(ppm):</span><span>=1</span><span>GB/T6324.4-2008</span></p>
+                        <p><span>Water content(ppm)</span><span>=50</span><span>GB/T11133-2015</span></p>
+                        <p>Product is made by Henan ZT league Chemical Co.,ltd </p>
+                        <br>
+                    </td>
+                    <td>153kg/Drum</td>
+                    <td>10.8MT</td>
+                    <td>USD 1950/MT</td>
+                    <td>1.000.00</td>
+                </tr>
+                <tr>
+                    <td width="50" class="brn" align="center"><b>2</b></td>
+                    <td colspan="2">
+                        <br>
+                        <p><b>ADIPIC ACID</b></p>
+                        <p><span>Test item</span><span>Specifications</span><span>Test Method</span></p>
+                        <p><span>Color Sybolt:</span><span>=+28</span><span>GB/T3555</span></p>
+                        <p><span>Initial boiling point(centigrade):</span><span>=96</span><span>GB/T6536-2010</span></p>
+                        <p><span>Dry point(centigrade):</span><span>=99</span><span>GB/T6536-2010</span></p>
+                        <p><span>N-heptane purity(%):</span><span>=99</span><span>GB/T9722-2006</span></p>
+                        <p><span>Specific gravity(kg/m3):</span><span>675-690</span><span>GB/T1884</span></p>
+                        <p><span>Bromine index(mg/100g):</span><span>=50</span><span>GB/T11136</span></p>
+                        <p><span>Aromatics content(ppm)</span><span>=50</span><span>SH/T/0913</span></p>
+                        <p><span>Total sulfur(ppm):</span><span>=1</span><span>GB/T6324.4-2008</span></p>
+                        <p><span>Total sulfur(ppm):</span><span>=1</span><span>GB/T6324.4-2008</span></p>
+                        <p><span>Water content(ppm)</span><span>=50</span><span>GB/T11133-2015</span></p>
+                        <p>Product is made by Henan ZT league Chemical Co.,ltd </p>
+                        <br>
+                    </td>
+                    <td>1000kg/Bag</td>
+                    <td>60MT</td>
+                    <td>USD1200/MT</td>
+                    <td>1.000.00</td>
+                </tr>
+                <tr>
+                    <td align="center"><b>SPECIAL INSTUCTIONS:</b></td>
+                    <td colspan="2">1)Packing: Drums with pallet packing</td>
+                    <td colspan="3" rowspan="2">
+                        <p><b>FREIGHT INSURANCE</b></p>
+                        <p><b>(CIF NHAVA SHEVA INDIA AS PER INCOTERMS 2010)</b></p>
+                        <p><b>TOTAL AMOUN</b></p>
+                    </td>
+                    <td rowspan="2">
+                        <p>300.00</p>
+                        <p>2.300.00</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td><b>DELIVERY SCHEDULE :</b></td>
+                    <td colspan="5">Distpatch within 30days after we get the L/C and signed ORDER &amp; SPECIFICATION CONFIRMATION </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="3" align="center">
+                        <p><b>FOR AND ON BEHALF OF (BUYER): </b><em>Bharat Jyoti Impex</em></p>
+                        <p>AUTHORISED SIGNATURE COMPANY CHOP</p>
+                    </td>
+                    <td colspan="4" align="center">
+                        <p><b>FOR AND ON BEHALF OF (BUYER): </b><em>Bharat Jyoti Impex</em></p>
+                        <p>AUTHORISED SIGNATURE COMPANY CHOP</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <b>THIS FILE IS VALID UPON THE SIGNATURE OF BOTH PARTIES , AND SCAN COPY OR FAX HAVE THE SAME FORCE OF LAW AS THE ORIGINAL ONE</b>
+                    </td>
+                </tr>
+            </table>
+        </div></script>
+    <div class="user">
+   		 <div class="print-order-btn">
+            <div class="wrapper">
+                <a href="javascript:;" class="keywa-btn keywa-btn-primary" onclick="preview(1)">print</a>
+            </div>
+        </div>
+    </div>
+    <!----footer---->
+    
+
+    <div class="login-footer">
+        <div class="copyright">Keywa.com © Copyright 2016 Keywa Inc. All rights reserved. ICP No.:GuangDong14005764</div>
+    </div>
+
+</body>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/template-web.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/alert/alert.js"></script>
+<script type="text/javascript">window.$domain = 'http://kwen.t.weixinren.cn/'</script>
+<script type="text/javascript">
+$.fn.serializeObject = function() {
+  var o = {};
+  var a = this.serializeArray();
+  $.each(a, function() {
+      if (o[this.name] !== undefined) {
+          if (!o[this.name].push) {
+              o[this.name] = [o[this.name]];
+          }
+          o[this.name].push(this.value || '');
+      } else {
+          o[this.name] = this.value || '';
+      }
+  });
+  return o;
+};
+$.post($domain + 'user/account/userDetail', {}, function(d){
+	 var data = {}
+	 if(d.code != '000'){ return }
+	 data = d.detail
+	 $('#username').html('<a href="/home/my/user.html" style="padding-right:5px;">'+ data.username +'</a>! Welcome to Keywa !')
+	 $('#sign_wrap').html('<a href="/home/my/user.html">Account</a><a href="/user/index/logout.html">Sign Out</a>')
+}, 'json')
+</script>
+<script type="text/javascript" src="__PUBLIC__/Front/js/print-order.js"></script>
+<script language="javascript">
+    function preview(oper){
+        if (oper < 10){
+            bdhtml=window.document.body.innerHTML; //获取当前页的html代码
+            sprnstr="<!--startprint"+oper+"-->"; //设置打印开始区域
+            eprnstr="<!--endprint"+oper+"-->"; //设置打印结束区域
+            prnhtml=bdhtml.substring(bdhtml.indexOf(sprnstr)+18);  //从开始代码向后取html
+            prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr)); //从结束代码向前取html
+            window.document.body.innerHTML=prnhtml;
+            window.print();
+            window.document.body.innerHTML=bdhtml;
+        } else {
+            window.print();
+        }
+    }
+</script>
+</html>

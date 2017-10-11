@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>商城销售管理--商品销售信息详情</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/common/common.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/css/page/sell/details.css">
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Admin/js/lib/easyui/jquery.easyui.min.js"></script>
+</head>
+
+<body>
+<form action="{:U('Product/addProduct')}" method="post">
+
+<h2>商品基本信息</h2>
+<div>
+销售标题(*):<input type="text" name="title" value="title"><br>
+名称:<input type="text" name="enName" value="Chemical"><br>
+别名:<input type="text" name="enAlias" value="Synonyms"><br>
+分类(*):<input type="text" name="categoryList" value="1,2,6">接口/admin/product/getCategory<br>
+生产商(*):<input type="text" name="producerId" value="1">接口/admin/product/getProducer<br>
+品牌:<input type="text" name="brandId" value="2">接口/admin/product/getBrand<br>
+产地(*):<input type="text" name="placeList" value="1,5,6">接口/admin/product/getArea<br>
+货物所在地(*):<input type="text" name="seatList" value="1,2,4">接口/admin/product/getArea<br><br>
+</div>
+
+<h2>关键指标：</h2>（从接口获取表单字段列表,接口/admin/product/getIndicator）<br>
+
+<h2>产品属性:</h2><br>
+<div>
+CAS号:<input type="text" name="cas" value="CAS"><br>
+纯度:<input type="text" name="format" value="format"><br>
+性状:<input type="text" name="character" value="solid"><br>
+质量等级:<input type="text" name="qualityGradeID" value="1">接口/admin/product/getQualityGrade<br>
+打包:<input type="text" name="pack" value="1"><br>
+EINECS NO.:<input type="text" name="einecs_no" value="EINECS"><br>
+气味:<input type="text" name="smell" value="Odor"><br>
+熔点:<input type="text" name="melting" value="melting"><br>
+沸点:<input type="text" name="boiling" value="boiling"><br>
+闪点:<input type="text" name="flash" value="Flash"><br>
+PH值:<input type="text" name="ph" value="pH"><br>
+密度:<input type="text" name="density" value="Relative"><br>
+溶解度:<input type="text" name="solubility" value="Solubility"><br>
+分子量:<input type="text" name="formula" value="Molecular"><br>
+MSDS:<input type="text" name="msds" value="/Uploads/User/20170901/59a8f644bd6a4.png"><br>
+TDS:<input type="text" name="tds" value="/Uploads/User/20170901/59a8f6473a589.png"><br>
+CoA:<input type="text" name="coa" value="/Uploads/User/20170901/59a8f6497d843.png"><br>
+经营模式:<input type="text" name="model" value="1">接口/admin/product/getModel<br>
+</div>
+
+<h2>描述信息:</h2><br>
+<div>
+简介:<input type="text" name="summary" value="Brief Introduction"><br>
+用途:<input type="text" name="purpose" value=""><br>
+存储条件:<input type="text" name="condition" value="Storage Condition"><br>
+</div>
+
+<h2>商品图片 (至少上传一张图片):</h2><br>
+<div>
+images:<input type="text" name="images" value="/Uploads/User/20170901/59a8f65522204.png,/Uploads/User/20170901/59a8f65522204.png"><br>
+</div>
+
+<h2>规格信息:</h2><br>
+<div>
+名称(*):<input type="text" name="specification[]" value="specification1"><br>
+价格(*):<input type="text" name="price[]" value="1000"><br>
+单位(*):<input type="text" name="weightUnit[]" value="1"><br>
+最低起订量(*):<input type="text" name="moq[]" value="2"><br>
+是否有库存(*)1有2无:<input type="text" name="inventoryType[]" value="1"><br>
+设置库存(*)1不设2设:<input type="text" name="inventory[]" value="2"><br>
+库存数量 (*):<input type="text" name="inventoryNum[]" value="2"><br>
+包装重量kg(*):<input type="text" name="packWeight[]" value="1000"><br><br>
+
+名称(*):<input type="text" name="specification[]" value="specification2"><br>
+价格(*):<input type="text" name="price[]" value="2"><br>
+单位(*):<input type="text" name="weightUnit[]" value="2"><br>
+最低起订量(*):<input type="text" name="moq[]" value="500"><br>
+是否有库存(*)1有2无:<input type="text" name="inventoryType[]" value="1"><br>
+设置库存(*)1不设2设:<input type="text" name="inventory[]" value="2"><br>
+包装重量kg(*):<input type="text" name="packWeight[]" value="1"><br>
+</div>
+文本框详情:<textarea name="detail"></textarea><br>
+<input type="submit">
+</div>
+</form>
+</body>
+</html>

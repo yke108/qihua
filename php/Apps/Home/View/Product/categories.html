@@ -1,0 +1,19 @@
+<script id="categories" type="text/html">
+{{each categories as value i}}
+<li>
+	<h3><a href="javascript:;"><i></i>{{value.text}}</a></h3>
+	{{each value.children as value2 i}}
+	<ol>
+		<li>
+			<h4><a href="javascript:;"><i></i>{{value2.text}}</a></h4>
+			<div class="categories-sub">
+				{{each value2.children as value3 i}}
+				<p><a href="{{value3.url}}" class="" categoryId="{{value3.id}}">{{value3.text}}</a></p>
+				{{/each}}
+			</div>
+		</li>
+	</ol>
+	{{/each}}
+</li>
+{{/each}}
+</script>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/contact-us.css">
+</head>
+<body>
+    <!----header---->
+    
+    <include file="Public/index-head" />
+
+
+    <!----nav---->
+    <include file="Public/index-nav" />
+
+    <!----contact-us---->
+    <div class="about-us-banner"><img src="__PUBLIC__/Front/images/terms-banner.jpg" width="100%"></div>
+    <div class="contact-us">
+        <div class="about-us-hd">
+            <ul class="clearfix">
+                <li><a href="{:U('Content/description')}"><i class="i1"></i><p>About us</p></a></li>
+                <li><a href="javascript:;" class="on"><i class="i2"></i><p>Contact us</p></a></li>
+                <li><a href="{:U('Content/news')}"><i class="i3"></i><p>Media Report</p></a></li>
+            </ul>
+        </div>
+        <div class="contact-us-hd">
+            <div class="wrapper">
+                <h1>Contact Keywa</h1>
+                <h2>Company Address</h2>
+                <dl class="clearfix">
+                    <dt class="map1"></dt>
+                    <dd>
+                        <h3>Foshan (Head Office)</h3>
+                        <p><span>Company Name: </span><em>{$data['fs']['companyName']}</em></p>
+                        <p><span>Company Address: </span><em>{$data['fs']['address']}</em></p>
+                        <p><span>Service Hotline：</span><em>{$data['fs']['serviceTel']}</em></p>
+                        <p><span>Telephone：</span><em>{$data['fs']['tel']}</em></p>
+                        <p><span>Fax：</span><em>{$data['fs']['fax']}</em></p>
+                        <p><span>Email：</span><em>{$data['fs']['email']}</em></p>
+                    </dd>
+                </dl>
+                <dl class="clearfix">
+                    <dt class="map2"></dt>
+                    <dd>
+                        <h3>Guangzhou(Branch Office)</h3>
+                        <p><span>Company Name: </span><em>{$data['gz']['companyName']}</em></p>
+                        <p><span>Company Address: </span><em>{$data['gz']['address']}</em></p>
+                        <p><span>Service Hotline：</span><em>{$data['gz']['serviceTel']}</em></p>
+                        <p><span>Telephone：</span><em>{$data['gz']['tel']}</em></p>
+                        <p><span>Fax：</span><em>{$data['gz']['fax']}</em></p>
+                        <p><span>Email：</span><em>{$data['gz']['email']}</em></p>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="contact-us-bd">
+            <div class="wrapper">
+                <h1>Business Cooperation</h1>
+                <h2>Invite cooperation</h2>
+                <ul class="clearfix">
+                    <volist name="data['bc']" id="vo">
+                    <li>
+                        <i></i>
+                        <h3>{$vo['title']}</h3>
+                        <p><span>Contact</span><em>{$vo['contact']}</em></p>
+                        <p><span>Telephone</span><em>{$vo['telephone']}</em></p>
+                        <p><span>Email</span><em>{$vo['email']}</em></p>
+                    </li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!----footer---->
+    <include file="Public/footer" />
+
+
+</body>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/js/contact-us.js"></script>
+</html>

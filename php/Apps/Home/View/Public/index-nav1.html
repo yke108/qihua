@@ -1,0 +1,67 @@
+    <php>
+        $category = getcategory();
+        $_indexControllers = array( 'Index' );
+        $_productControllers = array( 'Product' );
+        $_buyOfferControllers = array( 'Buyoffer' );
+        $_aboutUsActions = array( 'description','contact','news','newsdetails' );
+        $_protocolActions = array( 'protocol' );
+        $_SupplyControllers = array( 'Supply' );
+        $_SupplierControllers=array("Supplier");
+    </php>
+    <div class="nav">
+    <div class="wrapper clearfix">
+        <div class="nav-sort fl">
+            <h1><i></i>All Categories</h1>
+            <div class="nav-sort-list">
+                <ul>
+                    <volist name="category" id="vo">
+                    <li><a href="{:U('Product/index', ['categoryId'=> $vo['id']])}"><i class="icon{$i}"></i>{$vo['text']}</a></li>
+                    </volist>
+                </ul>
+                <ol>
+                    <volist name="category" id="vo">
+                    <li>
+                        <div class="nav-sort-item clearfix">
+                            <div class="nav-sort-item-l fl">
+                                <volist name="vo['children']" id="v1">
+                                <div class="nav-sort-item-l-sub">
+                                    <h3><a href="{:U('Product/index', ['categoryId'=> $v1['id']])}">{$v1['text']}</a></h3>
+                                    <p>
+                                        <volist name="v1['children']" id="v2">
+                                        <a href="{:U('Product/index', ['categoryId'=> $v2['id']])}">{$v2['text']}</a>
+                                        </volist>
+                                    </p>
+                                </div>
+                                </volist>
+                            </div>
+                            <div class="nav-sort-item-r fl">
+                                <volist name="vo['products']" id="v">
+                                <div class="nav-sort-item-r-sub">
+                                    <a href="{:U('Product/detail', ['id'=> $v['id']])}">
+                                        <div class="item-r-info">
+                                            <p>{$v['title']}</p>
+                                            <span>{$v['currency']}{$v['price']}/{$v['weightUnit']}</span>
+                                        </div>
+                                        <img src="{$v['thumb']}">
+                                    </a>
+                                </div>
+                                </volist>
+                            </div>
+                        </div>
+                    </li>
+                    </volist>
+                </ol>
+            </div>
+        </div>
+        <div class="nav-menu fl">
+            <ul class="clearfix">
+                <li><a href="/" <if condition="in_array( CONTROLLER_NAME, $_indexControllers )">class="on"</if>>Home</a></li>
+                <li><a href="{:U('Product/index')}" <if condition="in_array( CONTROLLER_NAME, $_productControllers )">class="on"</if>>Mall</a></li>
+                <li><a href="{:U('Buyoffer/indexlist')}" <if condition="in_array( CONTROLLER_NAME, $_buyOfferControllers )">class="on"</if>>Buy Offers</a></li>
+                <li><a href="{:U('Supply/lists')}" <if condition="in_array( CONTROLLER_NAME, $_SupplyControllers )">class="on"</if>>Supply offers</a></li>
+                <li><a href="{:U('Content/description')}" <if condition="in_array( ACTION_NAME, $_aboutUsActions )">class="on"</if>>About us</a></li>
+                <li><a href="{:U('Content/protocol')}" <if condition="in_array( ACTION_NAME, $_protocolActions )">class="on"</if>>Terms of Use</a></li>
+            </ul>
+        </div>
+    </div>
+    </div>

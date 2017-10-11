@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product List</title>
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/goods-list.css">
+	<style type="text/css">
+	.goods-list-box .goods-list-box-bd ul li p a{height:30px; display:block;}
+	.goods-list .goods-list-filter a{margin-right:5px;}
+	</style>
+</head>
+<body>
+    <!----header---->
+    <include file="Public/index-head" />
+
+
+    <!----nav---->
+    <include file="Public/index-nav" />
+
+    <!----goods-list---->
+    <div class="goods-list wrapper clearfix">
+        <div class="goods-list-filter" id="goods-list-filter-content">
+            
+        </div>
+        <div class="goods-list-categories fl">
+            <div class="goods-list-categories-item">
+                <h2>Categories</h2>
+                <ul id="categories-content">
+                    
+                </ul>
+            </div>
+            <div class="goods-list-categories-item">
+                <h2>Country</h2>
+                <ul id="countries-content">
+                    
+                </ul>
+            </div>
+            <div class="goods-list-categories-item">
+                <h2>Business Type</h2>
+                <ul id="companymodels-content">
+                   
+                </ul>
+            </div>
+        </div>
+        <div class="goods-list-box fr">
+            <div class="goods-list-box-hd">
+                <!--<p><a href="#">Non-ionic Surfactants</a><a href="#">Cationic Surfactants</a><a href="#">Anionic Surfactants</a><a href="#">Zwitterionic Surfactants</a><a href="#">Others</a></p>-->
+                <form action="{:U('')}"><input type="text" name="minPrice" value="{$get.minPrice}" placeholder="Min."><span>To</span><input type="text" name="maxPrice" value="{$get.maxPrice}" placeholder="Max."><button type="button" class="btn_search">Set</button></form>
+            </div>
+            <div class="goods-list-box-bd">
+                <ul class="clearfix" id="goods_content">
+                    
+                </ul>
+            </div>
+            <!----pages---->
+            <div id="pages-content">
+				
+			</div>
+        </div>
+    </div>
+
+    <!----footer---->
+    <include file="Public/footer" />
+
+
+</body>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/js/goods-list.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/Home/js/template-web.js"></script>
+<include file="Product/goods-list-filter" />
+<include file="Product/categories" />
+<include file="Product/countries" />
+<include file="Product/companymodels" />
+<script id="goods_list" type="text/html">
+{{each list as value i}}
+	<li>
+		<span><a href="{{value.url}}"><img src="{{value.thumb}}"></a></span>
+		<p><font>${{value.price}}/{{value.weightUnit}}</font></p>
+		<p><a href="{{value.url}}">{{value.title}}</a></p>
+		<a href="{{value.url}}" class="keywa-btn keywa-btn-orange">DETAILS</a>
+	</li>
+{{/each}}
+</script>
+<include file="Product/pages" />
+<script type="text/javascript">
+$(document).ready(function(){
+	get_goods_list("{$url}");
+	
+	$.post("{$url_search_data}", {}, function(d){
+		if(d.code == '000'){
+			var html = template('categories', d);
+			document.getElementById('categories-content').innerHTML = html;
+			
+			var html = template('countries', d);
+			document.getElementById('countries-content').innerHTML = html;
+			
+			var html = template('companymodels', d);
+			document.getElementById('companymodels-content').innerHTML = html;
+			
+			$('#categories-content .categories-sub a').click(function(){
+				$('#categories-content .categories-sub a').removeClass('on');
+				$(this).addClass('on');
+				
+				get_goods_list("{$url}");
+				return false;
+			});
+			
+			$('#countries-content li').click(function(){
+				get_goods_list("{$url}");
+				return false;
+			});
+			
+			$('#companymodels-content li').click(function(){
+				get_goods_list("{$url}");
+				return false;
+			});
+			
+			$.pageinit();
+		}
+	}, 'json');
+	
+	$('.btn_search').click(function(){
+		get_goods_list("{$url}");
+	});
+});
+
+$(document).on('click',".pages a",function(){  
+	get_goods_list($(this).attr('href'));
+	return false; 
+});
+
+function get_goods_list(url){
+	var countryIds = [];
+	$("#countries-content label.on").each(function(index,element){
+		countryIds.push($(this).attr('countryid'));
+	});
+	var companyModelIds = [];
+	$("#companymodels-content label.on").each(function(index,element){
+		companyModelIds.push($(this).attr('companymodelid'));
+	});
+	var data = {
+		categoryId:$('#categories-content .categories-sub a.on').attr('categoryid'),
+		countryIds:countryIds.join(','),
+		companyModelIds:companyModelIds.join(','),
+		minPrice:$('input[name=minPrice]').val(),
+		maxPrice:$('input[name=maxPrice]').val(),
+	};
+	$.post(url, data, function(d){
+		console.log(d)
+		if(d.code == '000'){
+			var html = template('goods-list-filter', d);
+			document.getElementById('goods-list-filter-content').innerHTML = html;
+			
+			var html = template('goods_list', d);
+			document.getElementById('goods_content').innerHTML = html;
+			
+			document.getElementById('pages-content').innerHTML = d.page_html;
+			
+			$('#filter-Categories').click(function(){
+				$(this).remove();
+				$('#categories-content .categories-sub a.on').removeClass('on');
+				get_goods_list(url);
+			});
+			
+			$('#filter-Country').click(function(){
+				$(this).remove();
+				$('#countries-content label.on').removeClass('on');
+				get_goods_list(url);
+			});
+			
+			$('#filter-BusinessType').click(function(){
+				$(this).remove();
+				$('#companymodels-content li label.on').removeClass('on');
+				get_goods_list(url);
+			});
+		}
+	}, 'json');
+}
+</script>
+
+<include file="Public/js" />
+
+</html>

@@ -1,0 +1,1 @@
+!function(t){function e(r){if(o[r])return o[r].exports;var s=o[r]={exports:{},id:r,loaded:!1};return t[r].call(s.exports,s,s.exports,e),s.loaded=!0,s.exports}var o={};return e.m=t,e.c=o,e.p="js/",e(0)}([function(t,e){$.post($domain+"user/Buyoffer/getBuyOfferList",{},function(t){"000"!=t.code&&(t={}),html=template("tp-buy-list",{list:t.list}),$("#buy-list").html(html)},"json")}]);

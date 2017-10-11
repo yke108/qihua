@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{$page_title}</title>
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/supply-offers-detaild.css">
+</head>
+<body>
+    <!----header---->
+    <include file="Public/index-head" />
+
+
+    <!----nav---->
+    <include file="Public/index-nav" />
+
+    <!----supply-offers-detaild---->
+    <div class="supply-offers-detaild-position">
+        <div class="wrapper">
+            <a href="{:U('Supply/lists')}">Supply offers</a><em>></em><span>Details</span>
+        </div>
+    </div>
+    <div class="supply-offers-detaild wrapper" id="supply-offers-detaild-content">
+        
+    </div>
+
+    <!----footer---->
+    <include file="Public/footer" />
+
+
+</body>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/js/supply-offers-detaild.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/Home/js/template-web.js"></script>
+<include file="Supply/supply-offers-detaild" />
+<script type="text/javascript">
+$(document).ready(function(){
+	var data = {
+		id:"{$id}"
+	};
+	$.post("{$url}", data, function(d){
+		console.log(d);
+		if(d.code == '000'){
+			var html = template('supply-offers-detaild', d);
+			document.getElementById('supply-offers-detaild-content').innerHTML = html;
+			
+			document.getElementById('supply-offers-detaild-bd-info').innerHTML = d.data.content;
+			
+			$(".collection").click(function(){
+				var collectionObj = $(this);
+				var iscollect = $(this).attr('iscollect');
+				if(iscollect == 1){
+					alert('Haved Collected');return false;
+				}
+				var islogin = $(this).attr('islogin');
+				if(islogin == 0){
+					window.location.href = "{:U('User/Index/login')}";
+				}
+				
+				var id = "{$id}";
+				$.post("{:U('user/collect/addCollect')}", {id:id, type:0}, function(d){
+					alert(d.message);
+					if(d.code == '000'){
+						collectionObj.attr('iscollect', 1);
+					}
+				}, 'json');
+				
+				return false;
+			});
+		}
+	}, 'json');
+});
+</script>
+
+<include file="Public/js" />
+
+</html>

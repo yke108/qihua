@@ -1,0 +1,89 @@
+<script id="goods-description" type="text/html">
+<div class="details clearfix">
+	<dl class="col-12">
+		<dt>Chemical Name:</dt>
+		<dd>{{description.enName}}</dd>
+	</dl>
+	<dl class="col-12">
+		<dt>Synonyms:</dt>
+		<dd>{{description.enAlias}}</dd>
+	</dl>
+	<dl class="col-4">
+		<dt>Manufacturer/Supplier:</dt>
+		<dd>{{description.producer}}</dd>
+	</dl>
+	<dl class="col-4">
+		<dt>Brand:</dt>
+		<dd>{{description.brand}}</dd>
+	</dl>
+	<dl class="col-4">
+		<dt>Origin:</dt>
+		<dd title="Jiangxi">{{description.origin}}</dd><dd title="China">China</dd>
+	</dl>
+	<dl class="col-4">
+		<dt>Purity:</dt>
+		<dd>{{description.format}}</dd>
+	</dl>
+	<dl class="col-4">
+		<dt>Appearance:</dt>
+		<dd>{{description.character}}</dd>
+	</dl>
+	<dl class="col-4">
+		<dt>Quality Grade:</dt>
+		<dd>{{description.qualityGrade}}</dd>
+	</dl>
+	<dl class="col-4">
+		<dt>Package:</dt>
+		<dd>{{description.pack}}</dd>
+	</dl>
+	<dl class="col-4">
+		<dt>Download:</dt>
+		<dd>
+			{{each description.download as value i}}
+			{{if value.url}}
+			<a href="{{value.url}}" target="_blank"><span>{{value.name}}</span><i class="icon-download"></i></a>
+			{{else}}
+			<a href="javascript:void(0);" class="undownload"><span>{{value.name}}</span><i class="icon-download"></i></a>
+			{{/if}}
+			{{/each}}
+		</dd>
+	</dl>
+</div>
+<ul>
+	<li>
+		<p><b>Brief Introduction</b></p>
+		<p style="word-wrap:break-word;">{{summary}}</p>
+	</li>
+</ul>
+<table class="table" width="100%">
+	<tbody>
+		{{each keyIndex as value i}}
+		<tr>
+			<td class="td-name">{{value[0]}}</td>
+			<td bgcolor="f4f9ff"><span class="sp">{{value[1]}}</span></td>
+			<td class="td-name">{{value[2]}}</td>
+			<td bgcolor="f4f9ff"><span class="sp">{{value[3]}}</span></td>
+		</tr>
+		{{/each}}
+		{{each attr as value i}}
+		<tr>
+			<td class="td-name td-name-1">{{value[0]}}</td>
+			<td><span>{{value[1]}}</span></td>
+			<td class="td-name td-name-1">{{value[2]}}</td>
+			<td><span>{{value[3]}}</span></td>
+		</tr>
+		{{/each}}
+	</tbody>
+</table>
+<ul>
+	<li>
+		<p><b>Application</b></p>
+		<p style="word-wrap:break-word;">{{purpose}}</p>
+	</li>
+	<li>
+		<p><b>Storage Condition</b></p>
+		<p style="word-wrap:break-word;">{{condition}}</p>
+		<p style="word-wrap:break-word;">{{detail}}</p>
+	</li>
+</ul>
+</script>

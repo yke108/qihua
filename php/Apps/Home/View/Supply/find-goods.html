@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>供应原料</title>
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/Front/css/supply-material.css">
+</head>
+<body>
+    <!----header---->
+    
+    <include file="Public/index-head" />
+
+
+    <!----nav---->
+    <include file="Public/index-nav" />
+
+    <!----supply material---->
+    <div class="supply-offers wrapper">
+        <div class="supply-offers-hd">
+            <h1>How to post your supply request ?</h1>
+            <ul class="clearfix">
+                <li>
+                    <i></i>
+                    <span class="icon1"></span>
+                    <b>step 1</b>
+                    <p>Register as a Member</p>
+                </li>
+                <li>
+                    <i></i>
+                    <span class="icon2"></span>
+                    <b>step 2</b>
+                    <p>Improve your information</p>
+                </li>
+                <li>
+                    <span class="icon3"></span>
+                    <b>step 3</b>
+                    <p>Get free inquiry immediately</p>
+                </li>
+            </ul>
+        </div>
+        <div class="supply-offers-bd">
+            <div class="supply-offers-bd-results">
+                <strong>Filter the species</strong>
+                <select class="chosen-select" style="width: 200px;">
+                    <option value="0" <if condition="$result['type'] eq 0">selected</if>>All type</option>
+                    <volist name="result['typeList']" id="vo">
+                    <option value="{$i}" <if condition="$result['type'] eq $i">selected</if>>{$vo}</option>
+                    </volist>
+                </select>
+                <em><font>{$result['count']}</font> results  <font>{$result['page']}</font> / {$result['pageCount']} <a href="{:U('User/Supply/addSupply')}"><i></i>Post Selling Leads</a></em>
+            </div>
+            <div class="supply-offers-list">
+                <volist name="result['list']" id="vo">
+                <dl class="clearfix">
+                    <dt><a href="{:U('Supply/SupplyDetails', ['id'=> $vo['id']])}"><img src="{$vo['image']}"></a></dt>
+                    <dd>
+                        <h2><a href="{:U('Supply/SupplyDetails', ['id'=> $vo['id']])}">{$vo['title']}</a></h2>
+                        <p><span>Type:</span><em>{$vo['type']}</em></p>
+                        <p><span>Location:</span><em>{$vo['location']}</em></p>
+                        <a href="{:U('Supply/SupplyDetails', ['id'=> $vo['id']])}" class="keywa-btn view_delete">View Delete</a>
+                    </dd>
+                </dl>
+                </volist>
+            </div>
+            <!----pages---->
+            {$result['show']}
+        </div>
+    </div>
+
+    <!----footer---->
+    <include file="Public/footer" />
+
+
+</body>
+<script type="text/javascript" src="__PUBLIC__/Front/lib/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Front/js/supply-material.js"></script>
+<script type="text/javascript">
+    $('.supply-offers-bd-results .chosen-select').change(function(){
+        var type = $(this).val();
+        window.location.href = "{:U('Buyoffer/indexlist')}"+'?type='+type; 
+    });
+</script>
+</html>
